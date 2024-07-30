@@ -1,0 +1,623 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		006A1ADD2BEBBA4E00871C8F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006A1ADC2BEBBA4E00871C8F /* AppDelegate.swift */; };
+		0071CC492C08B706002533CB /* LocationPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071CC482C08B706002533CB /* LocationPopupView.swift */; };
+		0071CC4B2C08B722002533CB /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0071CC4A2C08B722002533CB /* MapView.swift */; };
+		00B26A1A2BED0EBC00BBD78D /* StatusMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B26A192BED0EBC00BBD78D /* StatusMessageView.swift */; };
+		00B26A1C2BED169300BBD78D /* ConnectivityProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B26A1B2BED169300BBD78D /* ConnectivityProvider.swift */; };
+		00B26A232BED1BF200BBD78D /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B26A222BED1BF200BBD78D /* SignInView.swift */; };
+		00B26A272BED5C1700BBD78D /* SignInPrompt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00B26A262BED5C1700BBD78D /* SignInPrompt.swift */; };
+		00D7B99C2BF409A8005AB5F1 /* ImagePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D7B99B2BF409A8005AB5F1 /* ImagePopupView.swift */; };
+		00D7B9A22BF665BB005AB5F1 /* ConnectNavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D7B9A12BF665BB005AB5F1 /* ConnectNavBarButton.swift */; };
+		00D7B9AB2BF7DB53005AB5F1 /* StatusActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D7B9AA2BF7DB53005AB5F1 /* StatusActionSheet.swift */; };
+		00D7B9B52BFD3A62005AB5F1 /* InputDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D7B9B42BFD3A62005AB5F1 /* InputDialog.swift */; };
+		00D7B9B72BFD3A81005AB5F1 /* TextPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D7B9B62BFD3A81005AB5F1 /* TextPopupView.swift */; };
+		00E5E4292C0F95000028F485 /* AlertPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00E5E4282C0F95000028F485 /* AlertPopupView.swift */; };
+		3CB6E5CB643B630CEF5AC72A /* Pods_ZelloSDKExampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB79221BBBB40DCD8D0ECCA1 /* Pods_ZelloSDKExampleApp.framework */; };
+		419D06FC2C46D99E0028FB3C /* HistoryPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419D06FB2C46D99E0028FB3C /* HistoryPopupView.swift */; };
+		419D06FE2C46D9BA0028FB3C /* HistoryViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419D06FD2C46D9BA0028FB3C /* HistoryViewState.swift */; };
+		41B79CB42C3C7B1A001DD052 /* RecentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B79CB32C3C7B1A001DD052 /* RecentsView.swift */; };
+		41B79CB62C3C7B40001DD052 /* RecentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B79CB52C3C7B40001DD052 /* RecentsViewModel.swift */; };
+		41C742642BB48FE800D519F7 /* ZelloSDKExampleAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C742632BB48FE800D519F7 /* ZelloSDKExampleAppApp.swift */; };
+		41C742662BB4901E00D519F7 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C742652BB4901E00D519F7 /* TabBar.swift */; };
+		41C742732BB4915700D519F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41C742702BB4915700D519F7 /* Assets.xcassets */; };
+		41C742742BB4915700D519F7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 41C742712BB4915700D519F7 /* Preview Assets.xcassets */; };
+		41C742762BB492F500D519F7 /* ZelloService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C742752BB492F500D519F7 /* ZelloService.swift */; };
+		41C7427C2BB4964700D519F7 /* ConnectionViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C7427B2BB4964700D519F7 /* ConnectionViewState.swift */; };
+		41C7427E2BB4966A00D519F7 /* OutgoingVoiceMessageViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C7427D2BB4966A00D519F7 /* OutgoingVoiceMessageViewState.swift */; };
+		41C742802BB4969C00D519F7 /* IncomingVoiceMessageViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C7427F2BB4969C00D519F7 /* IncomingVoiceMessageViewState.swift */; };
+		41C742832BB4973300D519F7 /* UsersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C742812BB4973300D519F7 /* UsersView.swift */; };
+		41C742842BB4973300D519F7 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C742822BB4973300D519F7 /* UsersViewModel.swift */; };
+		41C742872BB4974A00D519F7 /* ChannelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C742852BB4974A00D519F7 /* ChannelsView.swift */; };
+		41C742882BB4974A00D519F7 /* ChannelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C742862BB4974A00D519F7 /* ChannelsViewModel.swift */; };
+		41C742A32BB498E500D519F7 /* SessionConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C742A22BB498E500D519F7 /* SessionConnectButton.swift */; };
+		41C742A52BB49B3300D519F7 /* ListItemTalkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C742A42BB49B3300D519F7 /* ListItemTalkButton.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		006A1ADA2BEBB7E100871C8F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		006A1ADB2BEBB8ED00871C8F /* ZelloSDKExampleApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ZelloSDKExampleApp.entitlements; sourceTree = "<group>"; };
+		006A1ADC2BEBBA4E00871C8F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0071CC482C08B706002533CB /* LocationPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPopupView.swift; sourceTree = "<group>"; };
+		0071CC4A2C08B722002533CB /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		00B26A152BEC01BD00BBD78D /* ZelloSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = ZelloSDK.xcframework; path = Pods/ZelloSDK/ZelloSDK.xcframework; sourceTree = "<group>"; };
+		00B26A192BED0EBC00BBD78D /* StatusMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMessageView.swift; sourceTree = "<group>"; };
+		00B26A1B2BED169300BBD78D /* ConnectivityProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectivityProvider.swift; sourceTree = "<group>"; };
+		00B26A222BED1BF200BBD78D /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		00B26A262BED5C1700BBD78D /* SignInPrompt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInPrompt.swift; sourceTree = "<group>"; };
+		00D7B99B2BF409A8005AB5F1 /* ImagePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePopupView.swift; sourceTree = "<group>"; };
+		00D7B9A12BF665BB005AB5F1 /* ConnectNavBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectNavBarButton.swift; sourceTree = "<group>"; };
+		00D7B9AA2BF7DB53005AB5F1 /* StatusActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusActionSheet.swift; sourceTree = "<group>"; };
+		00D7B9B42BFD3A62005AB5F1 /* InputDialog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputDialog.swift; sourceTree = "<group>"; };
+		00D7B9B62BFD3A81005AB5F1 /* TextPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPopupView.swift; sourceTree = "<group>"; };
+		00E5E4282C0F95000028F485 /* AlertPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPopupView.swift; sourceTree = "<group>"; };
+		172E3B4768D5DC4560663A60 /* Pods-ZelloSDKExampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZelloSDKExampleApp.release.xcconfig"; path = "Target Support Files/Pods-ZelloSDKExampleApp/Pods-ZelloSDKExampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		419D06FB2C46D99E0028FB3C /* HistoryPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryPopupView.swift; sourceTree = "<group>"; };
+		419D06FD2C46D9BA0028FB3C /* HistoryViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewState.swift; sourceTree = "<group>"; };
+		41B79CB32C3C7B1A001DD052 /* RecentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsView.swift; sourceTree = "<group>"; };
+		41B79CB52C3C7B40001DD052 /* RecentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentsViewModel.swift; sourceTree = "<group>"; };
+		41C742632BB48FE800D519F7 /* ZelloSDKExampleAppApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ZelloSDKExampleAppApp.swift; sourceTree = "<group>"; };
+		41C742652BB4901E00D519F7 /* TabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		41C742702BB4915700D519F7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		41C742712BB4915700D519F7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		41C742752BB492F500D519F7 /* ZelloService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZelloService.swift; sourceTree = "<group>"; };
+		41C7427B2BB4964700D519F7 /* ConnectionViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionViewState.swift; sourceTree = "<group>"; };
+		41C7427D2BB4966A00D519F7 /* OutgoingVoiceMessageViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutgoingVoiceMessageViewState.swift; sourceTree = "<group>"; };
+		41C7427F2BB4969C00D519F7 /* IncomingVoiceMessageViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomingVoiceMessageViewState.swift; sourceTree = "<group>"; };
+		41C742812BB4973300D519F7 /* UsersView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersView.swift; sourceTree = "<group>"; };
+		41C742822BB4973300D519F7 /* UsersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
+		41C742852BB4974A00D519F7 /* ChannelsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsView.swift; sourceTree = "<group>"; };
+		41C742862BB4974A00D519F7 /* ChannelsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChannelsViewModel.swift; sourceTree = "<group>"; };
+		41C742A22BB498E500D519F7 /* SessionConnectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionConnectButton.swift; sourceTree = "<group>"; };
+		41C742A42BB49B3300D519F7 /* ListItemTalkButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItemTalkButton.swift; sourceTree = "<group>"; };
+		41FCD7172BB32EF900F06DDE /* ZelloSDKExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZelloSDKExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B350D77533A95A10E3863DA7 /* Pods-ZelloSDKExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZelloSDKExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-ZelloSDKExampleApp/Pods-ZelloSDKExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		CB79221BBBB40DCD8D0ECCA1 /* Pods_ZelloSDKExampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZelloSDKExampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		41FCD7142BB32EF900F06DDE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3CB6E5CB643B630CEF5AC72A /* Pods_ZelloSDKExampleApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		00B26A1F2BED1B8800BBD78D /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				00B26A222BED1BF200BBD78D /* SignInView.swift */,
+				00B26A262BED5C1700BBD78D /* SignInPrompt.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		2D524CE9BA88D8725E87C022 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B350D77533A95A10E3863DA7 /* Pods-ZelloSDKExampleApp.debug.xcconfig */,
+				172E3B4768D5DC4560663A60 /* Pods-ZelloSDKExampleApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		3F3DD999CE899F2D4E2A01C0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				00B26A152BEC01BD00BBD78D /* ZelloSDK.xcframework */,
+				CB79221BBBB40DCD8D0ECCA1 /* Pods_ZelloSDKExampleApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		416751002BB3AE9C0095410A /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				00E5E4282C0F95000028F485 /* AlertPopupView.swift */,
+				00B26A1B2BED169300BBD78D /* ConnectivityProvider.swift */,
+				00D7B9A12BF665BB005AB5F1 /* ConnectNavBarButton.swift */,
+				00D7B99B2BF409A8005AB5F1 /* ImagePopupView.swift */,
+				00D7B9B42BFD3A62005AB5F1 /* InputDialog.swift */,
+				41C742A42BB49B3300D519F7 /* ListItemTalkButton.swift */,
+				0071CC482C08B706002533CB /* LocationPopupView.swift */,
+				0071CC4A2C08B722002533CB /* MapView.swift */,
+				41C742A22BB498E500D519F7 /* SessionConnectButton.swift */,
+				00D7B9AA2BF7DB53005AB5F1 /* StatusActionSheet.swift */,
+				00B26A192BED0EBC00BBD78D /* StatusMessageView.swift */,
+				00D7B9B62BFD3A81005AB5F1 /* TextPopupView.swift */,
+				419D06FB2C46D99E0028FB3C /* HistoryPopupView.swift */,
+				416751012BB3AEA90095410A /* Types */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		416751012BB3AEA90095410A /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				41C7427B2BB4964700D519F7 /* ConnectionViewState.swift */,
+				41C7427D2BB4966A00D519F7 /* OutgoingVoiceMessageViewState.swift */,
+				41C7427F2BB4969C00D519F7 /* IncomingVoiceMessageViewState.swift */,
+				419D06FD2C46D9BA0028FB3C /* HistoryViewState.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		41B79CB22C3C7B0E001DD052 /* Recents */ = {
+			isa = PBXGroup;
+			children = (
+				41B79CB32C3C7B1A001DD052 /* RecentsView.swift */,
+				41B79CB52C3C7B40001DD052 /* RecentsViewModel.swift */,
+			);
+			path = Recents;
+			sourceTree = "<group>";
+		};
+		41C742622BB474E500D519F7 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				00B26A1F2BED1B8800BBD78D /* SignIn */,
+				41C742652BB4901E00D519F7 /* TabBar.swift */,
+				41B79CB22C3C7B0E001DD052 /* Recents */,
+				41FCD72C2BB3377C00F06DDE /* Users */,
+				41FCD72D2BB3378A00F06DDE /* Channels */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		41C742692BB490DF00D519F7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				41C742752BB492F500D519F7 /* ZelloService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		41C742722BB4915700D519F7 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				41C742712BB4915700D519F7 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		41FCD70E2BB32EF900F06DDE = {
+			isa = PBXGroup;
+			children = (
+				41FCD7192BB32EF900F06DDE /* ZelloSDKExampleApp */,
+				41FCD7182BB32EF900F06DDE /* Products */,
+				2D524CE9BA88D8725E87C022 /* Pods */,
+				3F3DD999CE899F2D4E2A01C0 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		41FCD7182BB32EF900F06DDE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				41FCD7172BB32EF900F06DDE /* ZelloSDKExampleApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		41FCD7192BB32EF900F06DDE /* ZelloSDKExampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				006A1ADB2BEBB8ED00871C8F /* ZelloSDKExampleApp.entitlements */,
+				006A1ADA2BEBB7E100871C8F /* Info.plist */,
+				006A1ADC2BEBBA4E00871C8F /* AppDelegate.swift */,
+				41C742632BB48FE800D519F7 /* ZelloSDKExampleAppApp.swift */,
+				41C742622BB474E500D519F7 /* UI */,
+				41C742692BB490DF00D519F7 /* Services */,
+				416751002BB3AE9C0095410A /* Shared */,
+				41C742702BB4915700D519F7 /* Assets.xcassets */,
+				41C742722BB4915700D519F7 /* Preview Content */,
+			);
+			path = ZelloSDKExampleApp;
+			sourceTree = "<group>";
+		};
+		41FCD72C2BB3377C00F06DDE /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				41C742812BB4973300D519F7 /* UsersView.swift */,
+				41C742822BB4973300D519F7 /* UsersViewModel.swift */,
+			);
+			path = Users;
+			sourceTree = "<group>";
+		};
+		41FCD72D2BB3378A00F06DDE /* Channels */ = {
+			isa = PBXGroup;
+			children = (
+				41C742852BB4974A00D519F7 /* ChannelsView.swift */,
+				41C742862BB4974A00D519F7 /* ChannelsViewModel.swift */,
+			);
+			path = Channels;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		41FCD7162BB32EF900F06DDE /* ZelloSDKExampleApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41FCD7252BB32EFB00F06DDE /* Build configuration list for PBXNativeTarget "ZelloSDKExampleApp" */;
+			buildPhases = (
+				3518ECA791E7EA4C40540110 /* [CP] Check Pods Manifest.lock */,
+				41FCD7132BB32EF900F06DDE /* Sources */,
+				41FCD7142BB32EF900F06DDE /* Frameworks */,
+				41FCD7152BB32EF900F06DDE /* Resources */,
+				EEB1C7194AF3A7E8D03A3CD8 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZelloSDKExampleApp;
+			productName = ZelloSDKExampleApp;
+			productReference = 41FCD7172BB32EF900F06DDE /* ZelloSDKExampleApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		41FCD70F2BB32EF900F06DDE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					41FCD7162BB32EF900F06DDE = {
+						CreatedOnToolsVersion = 15.3;
+					};
+				};
+			};
+			buildConfigurationList = 41FCD7122BB32EF900F06DDE /* Build configuration list for PBXProject "ZelloSDKExampleApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 41FCD70E2BB32EF900F06DDE;
+			productRefGroup = 41FCD7182BB32EF900F06DDE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				41FCD7162BB32EF900F06DDE /* ZelloSDKExampleApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		41FCD7152BB32EF900F06DDE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				41C742742BB4915700D519F7 /* Preview Assets.xcassets in Resources */,
+				41C742732BB4915700D519F7 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3518ECA791E7EA4C40540110 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ZelloSDKExampleApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EEB1C7194AF3A7E8D03A3CD8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZelloSDKExampleApp/Pods-ZelloSDKExampleApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ZelloSDKExampleApp/Pods-ZelloSDKExampleApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ZelloSDKExampleApp/Pods-ZelloSDKExampleApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		41FCD7132BB32EF900F06DDE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00D7B9B72BFD3A81005AB5F1 /* TextPopupView.swift in Sources */,
+				41B79CB42C3C7B1A001DD052 /* RecentsView.swift in Sources */,
+				0071CC4B2C08B722002533CB /* MapView.swift in Sources */,
+				00B26A232BED1BF200BBD78D /* SignInView.swift in Sources */,
+				00D7B9AB2BF7DB53005AB5F1 /* StatusActionSheet.swift in Sources */,
+				41C742802BB4969C00D519F7 /* IncomingVoiceMessageViewState.swift in Sources */,
+				41C742A52BB49B3300D519F7 /* ListItemTalkButton.swift in Sources */,
+				00D7B9B52BFD3A62005AB5F1 /* InputDialog.swift in Sources */,
+				41C742662BB4901E00D519F7 /* TabBar.swift in Sources */,
+				00D7B9A22BF665BB005AB5F1 /* ConnectNavBarButton.swift in Sources */,
+				41C7427E2BB4966A00D519F7 /* OutgoingVoiceMessageViewState.swift in Sources */,
+				00D7B99C2BF409A8005AB5F1 /* ImagePopupView.swift in Sources */,
+				00B26A1C2BED169300BBD78D /* ConnectivityProvider.swift in Sources */,
+				41C742A32BB498E500D519F7 /* SessionConnectButton.swift in Sources */,
+				0071CC492C08B706002533CB /* LocationPopupView.swift in Sources */,
+				41C742832BB4973300D519F7 /* UsersView.swift in Sources */,
+				00B26A1A2BED0EBC00BBD78D /* StatusMessageView.swift in Sources */,
+				41B79CB62C3C7B40001DD052 /* RecentsViewModel.swift in Sources */,
+				00E5E4292C0F95000028F485 /* AlertPopupView.swift in Sources */,
+				41C742872BB4974A00D519F7 /* ChannelsView.swift in Sources */,
+				419D06FE2C46D9BA0028FB3C /* HistoryViewState.swift in Sources */,
+				41C7427C2BB4964700D519F7 /* ConnectionViewState.swift in Sources */,
+				41C742762BB492F500D519F7 /* ZelloService.swift in Sources */,
+				41C742882BB4974A00D519F7 /* ChannelsViewModel.swift in Sources */,
+				41C742642BB48FE800D519F7 /* ZelloSDKExampleAppApp.swift in Sources */,
+				41C742842BB4973300D519F7 /* UsersViewModel.swift in Sources */,
+				006A1ADD2BEBBA4E00871C8F /* AppDelegate.swift in Sources */,
+				419D06FC2C46D99E0028FB3C /* HistoryPopupView.swift in Sources */,
+				00B26A272BED5C1700BBD78D /* SignInPrompt.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		41FCD7232BB32EFB00F06DDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		41FCD7242BB32EFB00F06DDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		41FCD7262BB32EFB00F06DDE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B350D77533A95A10E3863DA7 /* Pods-ZelloSDKExampleApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ZelloSDKExampleApp/ZelloSDKExampleApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ZelloSDKExampleApp/Preview Content\"";
+				DEVELOPMENT_TEAM = U5TBRZ56DZ;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZelloSDKExampleApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Zello SDK Example App";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Use bluetooth to send voice messages";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Enables you to connect accessories such as headsets, microphones, and PTT buttons.";
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "Use bluetooth while the is in use";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Use location to always share with others";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to provide better services even when the app is in the background.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Use location to share with others";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use location when app is in use";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Use the microphone to send PTT Messages";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zello.ZelloSDKExampleApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		41FCD7272BB32EFB00F06DDE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 172E3B4768D5DC4560663A60 /* Pods-ZelloSDKExampleApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ZelloSDKExampleApp/ZelloSDKExampleApp.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"ZelloSDKExampleApp/Preview Content\"";
+				DEVELOPMENT_TEAM = U5TBRZ56DZ;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ZelloSDKExampleApp/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Zello SDK Example App";
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Use bluetooth to send voice messages";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Enables you to connect accessories such as headsets, microphones, and PTT buttons.";
+				INFOPLIST_KEY_NSBluetoothWhileInUseUsageDescription = "Use bluetooth while the is in use";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Use location to always share with others";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to provide better services even when the app is in the background.";
+				INFOPLIST_KEY_NSLocationUsageDescription = "Use location to share with others";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Use location when app is in use";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Use the microphone to send PTT Messages";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zello.ZelloSDKExampleApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		41FCD7122BB32EF900F06DDE /* Build configuration list for PBXProject "ZelloSDKExampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41FCD7232BB32EFB00F06DDE /* Debug */,
+				41FCD7242BB32EFB00F06DDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41FCD7252BB32EFB00F06DDE /* Build configuration list for PBXNativeTarget "ZelloSDKExampleApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				41FCD7262BB32EFB00F06DDE /* Debug */,
+				41FCD7272BB32EFB00F06DDE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 41FCD70F2BB32EF900F06DDE /* Project object */;
+}

@@ -1,0 +1,9 @@
+*.xcworkspacedata
+*.xccheckout
+*.xcuserstate
+*.xcsettings
+*xcuserdata
+.DS_Store
+ZelloSDKExampleApp.xcodeproj/project.xcworkspace/xcshareddata
+Pods
+ZelloSDKExampleApp.xcworkspace
