@@ -1,4 +1,5 @@
 import Combine
+import UIKit
 import ZelloSDK
 
 class UsersViewModel: ObservableObject, ConnectivityProvider {
@@ -157,12 +158,12 @@ class UsersViewModel: ObservableObject, ConnectivityProvider {
   }
 
   func setSelectedContact(user: ZelloUser) {
-    let contact = ZelloContact.zelloUser(user)
+    let contact = ZelloContact.user(user)
     ZelloRepository.instance.sdk.setSelectedContact(contact: contact)
   }
 
   func startSendingMessage(user: ZelloUser) {
-    let contact = ZelloContact.zelloUser(user)
+    let contact = ZelloContact.user(user)
     ZelloRepository.instance.sdk.startVoiceMessage(contact: contact)
   }
 
@@ -171,17 +172,17 @@ class UsersViewModel: ObservableObject, ConnectivityProvider {
   }
 
   func sendImage(user: ZelloUser, image: UIImage) {
-    let contact = ZelloContact.zelloUser(user)
+    let contact = ZelloContact.user(user)
     ZelloRepository.instance.sdk.send(image, to: contact)
   }
 
   func sendText(user: ZelloUser, message: String) {
-    let contact = ZelloContact.zelloUser(user)
+    let contact = ZelloContact.user(user)
     ZelloRepository.instance.sdk.send(textMessage: message, to: contact)
   }
 
   func sendAlert(user: ZelloUser, message: String) {
-    let contact = ZelloContact.zelloUser(user)
+    let contact = ZelloContact.user(user)
     ZelloRepository.instance.sdk.send(alertMessage: message, to: contact, using: nil)
   }
 
@@ -190,17 +191,17 @@ class UsersViewModel: ObservableObject, ConnectivityProvider {
   }
 
   func sendLocationTo(user: ZelloUser) {
-    let contact = ZelloContact.zelloUser(user)
+    let contact = ZelloContact.user(user)
     ZelloRepository.instance.sdk.sendLocation(to: contact)
   }
 
   func toggleMute(user: ZelloUser) {
-    let contact = ZelloContact.zelloUser(user)
+    let contact = ZelloContact.user(user)
     contact.isMuted ? ZelloRepository.instance.sdk.unmuteContact(contact: contact) : ZelloRepository.instance.sdk.muteContact(contact: contact)
   }
 
   func getHistory(user: ZelloUser) {
-    let contact = ZelloContact.zelloUser(user)
+    let contact = ZelloContact.user(user)
     ZelloRepository.instance.getHistory(contact: contact)
   }
 }

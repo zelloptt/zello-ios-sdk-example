@@ -18,6 +18,6 @@ target 'ZelloSDKExampleApp' do
   use_frameworks!
 
   # Pods for ZelloSDKExampleApp
-  pod "ZelloSDK", "~> 0.0.2-alpha.1"
+  pod "ZelloSDK-dev", "~> 0.3.0-alpha.1"
 
 end

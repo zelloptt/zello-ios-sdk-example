@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 import ZelloSDK
 
 struct ChannelsView: View {
@@ -10,7 +11,7 @@ struct ChannelsView: View {
   @State private var showAlertInputDialog = false
   @State private var channelInputText = ""
   @State private var selectedChannelForText: ZelloChannel?
-  @State private var selectedLevel: ZelloChannelAlertLevel? = .connected
+  @State private var selectedLevel: ZelloAlertMessage.ChannelLevel? = .connected
 
   var body: some View {
     NavigationView {
@@ -80,7 +81,7 @@ struct ChannelsView: View {
         }
 
         if showTextInputDialog, let selectedChannel = selectedChannelForText {
-          let contact = ZelloContact.zelloChannel(selectedChannel)
+          let contact = ZelloContact.channel(selectedChannel)
 
           InputDialog(
             isVisible: $showTextInputDialog,
@@ -94,7 +95,7 @@ struct ChannelsView: View {
         }
 
         if showAlertInputDialog, let selectedChannel = selectedChannelForText {
-          let contact = ZelloContact.zelloChannel(selectedChannel)
+          let contact = ZelloContact.channel(selectedChannel)
 
           InputDialog(
             isVisible: $showAlertInputDialog,
@@ -137,11 +138,11 @@ struct ChannelsView: View {
 
     var body: some View {
       VStack {
-        let isSelectedContact = viewModel.selectedContact == .zelloChannel(channel)
+        let isSelectedContact = viewModel.selectedContact == .channel(channel)
         Text(channel.name)
           .bold(isSelectedContact)
           .frame(maxWidth: .infinity, alignment: .leading)
-        Text(channel.channelStatus == .connected ? "Connected" : channel.channelStatus == .connecting ? "Connecting" : "Disconnected")
+        Text(channel.status == .connected ? "Connected" : channel.status == .connecting ? "Connecting" : "Disconnected")
           .bold(isSelectedContact)
           .frame(maxWidth: .infinity, alignment: .leading)
         Text(channel.usersOnline.description)
@@ -168,10 +169,10 @@ struct ChannelsView: View {
     let channel: ZelloChannel
 
     var body: some View {
-      Toggle("", isOn: .constant(channel.channelStatus == .connected))
-        .disabled(channel.channelStatus == .connecting)
+      Toggle("", isOn: .constant(channel.status == .connected))
+        .disabled(channel.status == .connecting)
         .onTapGesture {
-          if channel.channelStatus == .connected {
+          if channel.status == .connected {
             viewModel.disconnectChannel(channel: channel)
           } else {
             viewModel.connectChannel(channel: channel)
@@ -187,9 +188,9 @@ struct ChannelsView: View {
     var body: some View {
       let incomingVoiceMessageViewState = viewModel.incomingVoiceMessageViewState
       let outgoingVoiceMessageViewState = viewModel.outgoingVoiceMessageViewState
-      let isSameOutgoingContact = outgoingVoiceMessageViewState?.contact == .zelloChannel(channel)
+      let isSameOutgoingContact = outgoingVoiceMessageViewState?.contact == .channel(channel)
       let isSending = isSameOutgoingContact && outgoingVoiceMessageViewState?.state == .sending
-      let isReceiving = incomingVoiceMessageViewState?.contact == .zelloChannel(channel)
+      let isReceiving = incomingVoiceMessageViewState?.contact == .channel(channel)
       let isConnecting = isSameOutgoingContact && outgoingVoiceMessageViewState?.state == .connecting
       ListItemTalkButton(isSending: isSending, isReceiving: isReceiving, isConnecting: isConnecting, isEnabled: true) {
         viewModel.startSendingMessage(channel: channel)

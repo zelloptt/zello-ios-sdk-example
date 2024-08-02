@@ -72,7 +72,7 @@ struct UsersView: View {
         }
 
         if showTextInputDialog, let selectedUser = selectedUserForText {
-          let contact = ZelloContact.zelloUser(selectedUser)
+          let contact = ZelloContact.user(selectedUser)
 
           InputDialog(
             isVisible: $showTextInputDialog,
@@ -86,7 +86,7 @@ struct UsersView: View {
         }
 
         if showAlertInputDialog, let selectedUser = selectedUserForText {
-          let contact = ZelloContact.zelloUser(selectedUser)
+          let contact = ZelloContact.user(selectedUser)
 
           InputDialog(
             isVisible: $showAlertInputDialog,
@@ -127,7 +127,7 @@ struct UsersView: View {
     let user: ZelloUser
 
     var body: some View {
-      let isSelectedContact = (viewModel.selectedContact == .zelloUser(user))
+      let isSelectedContact = (viewModel.selectedContact == .user(user))
       let displayText = user.displayName != user.name && !user.displayName.isEmpty ? "\(user.displayName) (\(user.name))" : user.name
       Text(displayText)
         .padding(.horizontal, 8)
@@ -141,7 +141,7 @@ struct UsersView: View {
   }
 
   struct UserStatusColor {
-    static func color(for status: ZelloUser.UserStatus) -> Color {
+    static func color(for status: ZelloUser.Status) -> Color {
       switch status {
       case .offline:
         return .gray.opacity(0.8)
@@ -164,9 +164,9 @@ struct UsersView: View {
     var body: some View {
       let incomingVoiceMessageViewState = viewModel.incomingVoiceMessageViewState
       let outgoingVoiceMessageViewState = viewModel.outgoingVoiceMessageViewState
-      let isSameOutgoingContact = outgoingVoiceMessageViewState?.contact == .zelloUser(user)
+      let isSameOutgoingContact = outgoingVoiceMessageViewState?.contact == .user(user)
       let isSending = isSameOutgoingContact && outgoingVoiceMessageViewState?.state == .sending
-      let isReceiving = incomingVoiceMessageViewState?.contact == .zelloUser(user)
+      let isReceiving = incomingVoiceMessageViewState?.contact == .user(user)
       let isConnecting = isSameOutgoingContact && outgoingVoiceMessageViewState?.state == .connecting
       ListItemTalkButton(isSending: isSending, isReceiving: isReceiving, isConnecting: isConnecting, isEnabled: true) {
         viewModel.startSendingMessage(user: user)
