@@ -2,13 +2,13 @@ import Foundation
 import Combine
 import ZelloSDK
 
-class ZelloRepository: ZelloSdk.Delegate, ObservableObject {
+class ZelloRepository: Zello.Delegate, ObservableObject {
 
   static let instance = ZelloRepository()
 
-  let sdk = ZelloSdk()
+  let sdk = Zello.shared
 
-  @Published var connectionState: ZelloConnectionState = .disconnected
+  @Published var connectionState: Zello.ConnectionState = .disconnected
   @Published var users: [ZelloUser] = []
   @Published var channels: [ZelloChannel] = []
   @Published var selectedContact: ZelloContact? = nil
@@ -41,141 +41,141 @@ class ZelloRepository: ZelloSdk.Delegate, ObservableObject {
     sdk.delegate = self
   }
 
-  func zelloDidStartConnecting(_ sdk: ZelloSdk) {
-    connectionState = sdk.connectionState
+  func zelloDidStartConnecting(_ zello: Zello) {
+    connectionState = zello.connectionState
   }
 
-  func zelloDidFinishConnecting(_ sdk: ZelloSdk) {
-    connectionState = sdk.connectionState
+  func zelloDidFinishConnecting(_ zello: Zello) {
+    connectionState = zello.connectionState
   }
 
-  func zello(_ sdk: ZelloSdk, didFailToConnect error: ZelloConnectionError) {
-    connectionState = sdk.connectionState
+  func zello(_ zello: Zello, didFailToConnect error: Zello.ConnectionError) {
+    connectionState = zello.connectionState
     statusMessage = "Failed to connect \(error.localizedDescription)"
   }
 
-  func zelloDidDisconnect(_ sdk: ZelloSdk) {
-    connectionState = sdk.connectionState
+  func zelloDidDisconnect(_ zello: Zello) {
+    connectionState = zello.connectionState
   }
 
-  func zelloWillReconnect(_ sdk: ZelloSdk) { }
+  func zelloWillReconnect(_ zello: Zello) { }
 
-  func zelloDidUpdateContactList(_ sdk: ZelloSdk) {
-    users = sdk.users
-    channels = sdk.channels
-    emergencyChannel = sdk.emergencyChannel
+  func zelloDidUpdateContactList(_ zello: Zello) {
+    users = zello.users
+    channels = zello.channels
+    emergencyChannel = zello.emergencyChannel
   }
 
-  func zello(_ sdk: ZelloSdk, accountStatusChangedTo newStatus: ZelloAccountStatus?) {
+  func zello(_ zello: Zello, accountStatusChangedTo newStatus: ZelloAccountStatus?) {
     accountStatus = newStatus
   }
 
-  func zello(_ sdk: ZelloSdk, didUpdateSelectedContact contact: ZelloContact) {
+  func zello(_ zello: Zello, didUpdateSelectedContact contact: ZelloContact) {
     selectedContact = contact
   }
 
-  func zello(_ sdk: ZelloSdk, didStartConnecting outgoingVoiceMessage: ZelloOutgoingVoiceMessage) {
+  func zello(_ zello: Zello, didStartConnecting outgoingVoiceMessage: ZelloOutgoingVoiceMessage) {
     self.outgoingVoiceMessage = outgoingVoiceMessage
   }
 
-  func zello(_ sdk: ZelloSdk, didStartSending outgoingVoiceMessage: ZelloOutgoingVoiceMessage) {
+  func zello(_ zello: Zello, didStartSending outgoingVoiceMessage: ZelloOutgoingVoiceMessage) {
     self.outgoingVoiceMessage = outgoingVoiceMessage
   }
 
-  func zello(_ sdk: ZelloSdk, didFinishSending outgoingVoiceMessage: ZelloOutgoingVoiceMessage, error: ZelloOutgoingVoiceMessageError?) {
+  func zello(_ zello: Zello, didFinishSending outgoingVoiceMessage: ZelloOutgoingVoiceMessage, error: ZelloOutgoingVoiceMessage.Error?) {
     if let error {
       statusMessage = "Failed to send message \(error.localizedDescription)"
     }
     self.outgoingVoiceMessage = nil
   }
 
-  func zello(_ sdk: ZelloSdk, didStartReceiving incomingVoiceMessage: ZelloIncomingVoiceMessage) {
+  func zello(_ zello: Zello, didStartReceiving incomingVoiceMessage: ZelloIncomingVoiceMessage) {
     self.incomingVoiceMessage = incomingVoiceMessage
   }
 
-  func zello(_ sdk: ZelloSdk, didFinishReceiving incomingVoiceMessage: ZelloIncomingVoiceMessage) {
+  func zello(_ zello: Zello, didFinishReceiving incomingVoiceMessage: ZelloIncomingVoiceMessage) {
     self.incomingVoiceMessage = nil
   }
 
-  func zello(_ sdk: ZelloSdk, didReceive imageMessage: ZelloImageMessage) {
+  func zello(_ zello: Zello, didReceive imageMessage: ZelloImageMessage) {
     self.lastIncomingImageMessage = imageMessage
   }
 
-  func zello(_ sdk: ZelloSdk, didSend imageMessage: ZelloImageMessage) {
+  func zello(_ zello: Zello, didSend imageMessage: ZelloImageMessage) {
     print("sent image message")
   }
 
-  func zello(_ sdk: ZelloSdk, didFailToSend imageMessage: ZelloImageMessage) {
+  func zello(_ zello: Zello, didFailToSend imageMessage: ZelloImageMessage) {
     statusMessage = "Failed to send image message"
   }
 
-  func zello(_ sdk: ZelloSdk, didReceive textMessage: ZelloTextMessage) {
+  func zello(_ zello: Zello, didReceive textMessage: ZelloTextMessage) {
     self.lastIncomingTextMessage = textMessage
   }
 
-  func zello(_ sdk: ZelloSdk, didSend textMessage: ZelloTextMessage) {
+  func zello(_ zello: Zello, didSend textMessage: ZelloTextMessage) {
     print("sent text message")
   }
 
-  func zello(_ sdk: ZelloSdk, didFailToSend textMessage: ZelloTextMessage) {
+  func zello(_ zello: Zello, didFailToSend textMessage: ZelloTextMessage) {
     statusMessage = "Failed to send image message"
   }
 
-  func zello(_ sdk: ZelloSdk, didReceive locationMessage: ZelloLocationMessage) {
+  func zello(_ zello: Zello, didReceive locationMessage: ZelloLocationMessage) {
     self.lastIncomingLocationMessage = locationMessage
   }
 
-  func zello(_ sdk: ZelloSDK.ZelloSdk, didSend locationMessage: ZelloSDK.ZelloLocationMessage) {
+  func zello(_ zello: Zello, didSend locationMessage: ZelloLocationMessage) {
     print("sent location message")
   }
 
-  func zello(_ sdk: ZelloSdk, didFailToSend locationMessage: ZelloLocationMessage) {
+  func zello(_ zello: Zello, didFailToSend locationMessage: ZelloLocationMessage) {
     statusMessage = "Failed to send image message"
   }
 
-  func zello(_ sdk: ZelloSdk, didReceive alertMessage: ZelloAlertMessage) {
+  func zello(_ zello: Zello, didReceive alertMessage: ZelloAlertMessage) {
     self.lastIncomingAlertMessage = alertMessage
   }
 
-  func zello(_ sdk: ZelloSDK.ZelloSdk, didSend alertMessage: ZelloSDK.ZelloAlertMessage) {
+  func zello(_ zello: Zello, didSend alertMessage: ZelloSDK.ZelloAlertMessage) {
     print("sent alert message")
   }
 
-  func zello(_ sdk: ZelloSdk, didFailToSend alertMessage: ZelloAlertMessage) {
+  func zello(_ zello: Zello, didFailToSend alertMessage: ZelloAlertMessage) {
     statusMessage = "Failed to send image message"
   }
 
-  func zello(_ sdk: ZelloSDK.ZelloSdk, didStart outgoingEmergency: ZelloSDK.ZelloOutgoingEmergency) {
+  func zello(_ zello: Zello, didStart outgoingEmergency: ZelloOutgoingEmergency) {
     self.outgoingEmergency = sdk.outgoingEmergency
   }
 
-  func zello(_ sdk: ZelloSDK.ZelloSdk, didStop outgoingEmergency: ZelloSDK.ZelloOutgoingEmergency) {
+  func zello(_ zello: Zello, didStop outgoingEmergency: ZelloOutgoingEmergency) {
     self.outgoingEmergency = sdk.outgoingEmergency
   }
 
-  func zello(_ sdk: ZelloSDK.ZelloSdk, didStart incomingEmergency: ZelloSDK.ZelloIncomingEmergency) {
+  func zello(_ zello: Zello, didStart incomingEmergency: ZelloIncomingEmergency) {
     incomingEmergencies = sdk.incomingEmergencies
   }
 
-  func zello(_ sdk: ZelloSDK.ZelloSdk, didStop incomingEmergency: ZelloSDK.ZelloIncomingEmergency) {
+  func zello(_ zello: Zello, didStop incomingEmergency: ZelloIncomingEmergency) {
     incomingEmergencies = sdk.incomingEmergencies
   }
 
-  func zello(_ sdk: ZelloSdk, didUpdate recentEntries: [ZelloRecentEntry]) {
+  func zello(_ zello: Zello, didUpdate recentEntries: [ZelloRecentEntry]) {
     self.recents = recentEntries
   }
 
-  func zelloDidUpdateHistory(_ sdk: ZelloSdk) {
+  func zelloDidUpdateHistory(_ zello: Zello) {
     if let history {
       getHistory(contact: history.contact)
     }
   }
 
-  func zello(_ sdk: ZelloSdk, didStartHistoryPlayback message: ZelloHistoryVoiceMessage) {
+  func zello(_ zello: Zello, didStartHistoryPlayback message: ZelloHistoryVoiceMessage) {
     activeHistoryVoiceMessage = message
   }
 
-  func zello(_ sdk: ZelloSdk, didStopHistoryPlayback message: ZelloHistoryVoiceMessage) {
+  func zello(_ zello: Zello, didStopHistoryPlayback message: ZelloHistoryVoiceMessage) {
     activeHistoryVoiceMessage = nil
   }
 

@@ -9,14 +9,14 @@ enum InputAction: String {
 struct InputDialog: View {
   @Binding var isVisible: Bool
   @Binding var text: String
-  @Binding var selectedLevel: ZelloChannelAlertLevel?
+  @Binding var selectedLevel: ZelloAlertMessage.ChannelLevel?
   let action: InputAction
   let contact: ZelloContact
   var onSend: () -> Void
 
   init(isVisible: Binding<Bool>,
        text: Binding<String>,
-       selectedLevel: Binding<ZelloChannelAlertLevel?> = .constant(nil),
+       selectedLevel: Binding<ZelloAlertMessage.ChannelLevel?> = .constant(nil),
        action: InputAction,
        contact: ZelloContact,
        onSend: @escaping () -> Void) {
@@ -39,8 +39,8 @@ struct InputDialog: View {
 
       if selectedLevel != nil {
         Picker("Select Level", selection: $selectedLevel.unwrap(defaultValue: .connected)) {
-          ForEach(ZelloChannelAlertLevel.allCases, id: \.self) { level in
-            Text(level.description).tag(level as ZelloChannelAlertLevel?)
+          ForEach(ZelloAlertMessage.ChannelLevel.allCases, id: \.self) { level in
+            Text(level.description).tag(level as ZelloAlertMessage.ChannelLevel?)
           }
         }
         .pickerStyle(SegmentedPickerStyle())
@@ -76,8 +76,8 @@ extension Binding where Value: ExpressibleByNilLiteral {
   }
 }
 
-extension ZelloChannelAlertLevel: CaseIterable {
-  public static var allCases: [ZelloChannelAlertLevel] {
+extension ZelloAlertMessage.ChannelLevel: CaseIterable {
+  public static var allCases: [Self] {
     return [.connected, .all]
   }
 

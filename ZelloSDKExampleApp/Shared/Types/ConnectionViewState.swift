@@ -1,9 +1,9 @@
 import ZelloSDK
 
 struct ConnectionViewState {
-  var connectionState: ZelloConnectionState
+  var connectionState: Zello.ConnectionState
 
-  init(connectionState: ZelloConnectionState) {
+  init(connectionState: Zello.ConnectionState) {
     self.connectionState = connectionState
   }
 }

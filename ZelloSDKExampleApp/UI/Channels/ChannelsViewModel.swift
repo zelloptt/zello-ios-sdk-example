@@ -1,4 +1,5 @@
 import Combine
+import UIKit
 import ZelloSDK
 
 class ChannelsViewModel: ObservableObject, ConnectivityProvider {
@@ -178,12 +179,12 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
   }
 
   func setSelectedContact(channel: ZelloChannel) {
-    let contact = ZelloContact.zelloChannel(channel)
+    let contact = ZelloContact.channel(channel)
     ZelloRepository.instance.sdk.setSelectedContact(contact: contact)
   }
 
   func startSendingMessage(channel: ZelloChannel) {
-    let contact = ZelloContact.zelloChannel(channel)
+    let contact = ZelloContact.channel(channel)
     ZelloRepository.instance.sdk.startVoiceMessage(contact: contact)
   }
 
@@ -200,7 +201,7 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
   }
 
   func sendImage(channel: ZelloChannel, image: UIImage) {
-    let contact = ZelloContact.zelloChannel(channel)
+    let contact = ZelloContact.channel(channel)
     ZelloRepository.instance.sdk.send(image, to: contact)
   }
 
@@ -209,22 +210,22 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
   }
 
   func sendText(channel: ZelloChannel, message: String) {
-    let contact = ZelloContact.zelloChannel(channel)
+    let contact = ZelloContact.channel(channel)
     ZelloRepository.instance.sdk.send(textMessage: message, to: contact)
   }
 
-  func sendAlert(channel: ZelloChannel, message: String, level: ZelloChannelAlertLevel? = nil) {
-    let contact = ZelloContact.zelloChannel(channel)
+  func sendAlert(channel: ZelloChannel, message: String, level: ZelloAlertMessage.ChannelLevel? = nil) {
+    let contact = ZelloContact.channel(channel)
     ZelloRepository.instance.sdk.send(alertMessage: message, to: contact, using: level)
   }
 
   func sendLocationTo(channel: ZelloChannel) {
-    let contact = ZelloContact.zelloChannel(channel)
+    let contact = ZelloContact.channel(channel)
     ZelloRepository.instance.sdk.sendLocation(to: contact)
   }
 
   func toggleMute(channel: ZelloChannel) {
-    let contact = ZelloContact.zelloChannel(channel)
+    let contact = ZelloContact.channel(channel)
     contact.isMuted ? ZelloRepository.instance.sdk.unmuteContact(contact: contact) : ZelloRepository.instance.sdk.muteContact(contact: contact)
   }
 
@@ -237,7 +238,7 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
   }
 
   func getHistory(channel: ZelloChannel) {
-    let contact = ZelloContact.zelloChannel(channel)
+    let contact = ZelloContact.channel(channel)
     ZelloRepository.instance.getHistory(contact: contact)
   }
 }

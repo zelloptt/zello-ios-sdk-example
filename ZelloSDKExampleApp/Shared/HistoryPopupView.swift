@@ -36,7 +36,7 @@ struct HistoryPopupView: View {
                       Text(String(describing: type(of: message)))
                       Text(message.timestamp.formatted())
                       if let voiceMessage = message as? ZelloHistoryVoiceMessage {
-                        Text("\(voiceMessage.durationMs) ms")
+                        Text("\(voiceMessage.duration) seconds")
                       } else if let imageMessage = message as? ZelloHistoryImageMessage,
                          let message = ZelloRepository.instance.sdk.loadHistoryImage(for: imageMessage) {
                         Image(uiImage: message)
