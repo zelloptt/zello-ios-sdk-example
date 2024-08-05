@@ -1,6 +1,5 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '17.0'
-source "https://github.com/zelloptt/cocoapods-specs.git"
 source 'https://cdn.cocoapods.org/'
 
 # hide the missing localizability warning on the pods project
@@ -18,6 +17,6 @@ target 'ZelloSDKExampleApp' do
   use_frameworks!
 
   # Pods for ZelloSDKExampleApp
-  pod "ZelloSDK-dev", "~> 0.3.0-alpha.1"
+  pod "ZelloSDK", "~> 0.3.0"
 
 end

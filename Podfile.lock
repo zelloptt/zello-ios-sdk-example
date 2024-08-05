@@ -12,7 +12,7 @@ PODS:
     - SDWebImage/Core (= 5.19.4)
   - SDWebImage/Core (5.19.4)
   - zello-opus-ios (1.0.1)
-  - ZelloSDK-dev (0.3.0-alpha.1):
+  - ZelloSDK (0.3.0):
     - CocoaAsyncSocket (~> 7.6)
     - CocoaLumberjack/Swift (~> 3.7)
     - OpenSSL-Universal (~> 1.1)
@@ -22,11 +22,9 @@ PODS:
     - zello-opus-ios (~> 1.0)
 
 DEPENDENCIES:
-  - ZelloSDK-dev (~> 0.3.0-alpha.1)
+  - ZelloSDK (~> 0.3.0)
 
 SPEC REPOS:
-  https://github.com/zelloptt/cocoapods-specs:
-    - ZelloSDK-dev
   trunk:
     - CocoaAsyncSocket
     - CocoaLumberjack
@@ -36,6 +34,7 @@ SPEC REPOS:
     - PromisesSwift
     - SDWebImage
     - zello-opus-ios
+    - ZelloSDK
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
@@ -46,8 +45,8 @@ SPEC CHECKSUMS:
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   SDWebImage: 066c47b573f408f18caa467d71deace7c0f8280d
   zello-opus-ios: 8c1f08799d7a147c86f21ec2a18f7b19f8c2ceed
-  ZelloSDK-dev: ad6afa666d9ba615f76564c6dd3f7548646babc2
+  ZelloSDK: 745045773da870bdcf4cb1d103bbe85bb01ad8a2
 
-PODFILE CHECKSUM: fd2c1d0b89fa5802736f3cf4a61e9b99d564f0e8
+PODFILE CHECKSUM: d2f61d6c9b00faf480271c741cbf3284bacfd301
 
 COCOAPODS: 1.15.2
