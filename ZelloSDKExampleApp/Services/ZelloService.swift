@@ -40,9 +40,9 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
   init() {
     sdk.delegate = self
     #if DEBUG
-    sdk.configure(isDebugBuild: true, appGroup: "group.com.zello.shared")
+    sdk.configure(isDebugBuild: true, appGroup: "group.com.yourCompany.shared")
     #else
-    sdk.configure(isDebugBuild: false, appGroup: "group.com.zello.shared")
+    sdk.configure(isDebugBuild: false, appGroup: "group.com.yourCompany.shared")
     #endif
   }
 
