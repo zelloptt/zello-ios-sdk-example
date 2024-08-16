@@ -39,6 +39,11 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
 
   init() {
     sdk.delegate = self
+    #if DEBUG
+    sdk.configure(isDebugBuild: true, appGroup: "group.com.zello.shared")
+    #else
+    sdk.configure(isDebugBuild: false, appGroup: "group.com.zello.shared")
+    #endif
   }
 
   func zelloDidStartConnecting(_ zello: Zello) {
