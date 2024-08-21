@@ -532,7 +532,7 @@
 				CODE_SIGN_ENTITLEMENTS = SDKNotificationServiceExtension/SDKNotificationServiceExtensionDebug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = U5TBRZ56DZ;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SDKNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SDKNotificationServiceExtension;
@@ -560,7 +560,7 @@
 				CODE_SIGN_ENTITLEMENTS = SDKNotificationServiceExtension/SDKNotificationServiceExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = U5TBRZ56DZ;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SDKNotificationServiceExtension/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = SDKNotificationServiceExtension;
@@ -711,7 +711,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ZelloSDKExampleApp/Preview Content\"";
-				DEVELOPMENT_TEAM = U5TBRZ56DZ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -755,7 +755,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"ZelloSDKExampleApp/Preview Content\"";
-				DEVELOPMENT_TEAM = U5TBRZ56DZ;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
