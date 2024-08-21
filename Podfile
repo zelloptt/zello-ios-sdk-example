@@ -1,7 +1,6 @@
 # Uncomment the next line to define a global platform for your project
 platform :ios, '17.0'
 source 'https://cdn.cocoapods.org/'
-source "https://github.com/zelloptt/cocoapods-specs.git"
 
 # hide the missing localizability warning on the pods project
 post_install do |installer|
