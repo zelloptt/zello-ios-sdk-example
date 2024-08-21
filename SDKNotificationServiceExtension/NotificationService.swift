@@ -7,7 +7,7 @@ class NotificationService: UNNotificationServiceExtension {
 
   override init() {
     super.init()
-    Zello.setAppGroup("group.com.yourapp.shared")
+    Zello.setAppGroup("group.com.yourCompany.shared")
   }
 
   override func didReceive(_ request: UNNotificationRequest, withContentHandler contentHandler: @escaping (UNNotificationContent) -> Void) {
