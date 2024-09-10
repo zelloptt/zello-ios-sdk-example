@@ -36,6 +36,7 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
   @Published var recents: [ZelloRecentEntry] = []
   @Published var history: HistoryViewState? = nil
   @Published var activeHistoryVoiceMessage: ZelloHistoryVoiceMessage? = nil
+  @Published var settings: ZelloConsoleSettings? = nil
 
   init() {
     zello.delegate = self
@@ -142,7 +143,7 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
     self.lastIncomingAlertMessage = alertMessage
   }
 
-  func zello(_ zello: Zello, didSend alertMessage: ZelloSDK.ZelloAlertMessage) {
+  func zello(_ zello: Zello, didSend alertMessage: ZelloAlertMessage) {
     print("sent alert message")
   }
 
@@ -180,8 +181,12 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
     activeHistoryVoiceMessage = message
   }
 
-  func zello(_ zello: Zello, didStopHistoryPlayback message: ZelloHistoryVoiceMessage) {
+  func zello(_ zello: Zello, didFinishHistoryPlayback message: ZelloHistoryVoiceMessage) {
     activeHistoryVoiceMessage = nil
+  }
+
+  func zello(_ zello: Zello, didUpdate settings: ZelloConsoleSettings) {
+    self.settings = settings
   }
 
   func getHistory(contact: ZelloContact) {

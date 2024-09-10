@@ -23,6 +23,7 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
   @Published var incomingEmergencies: [ZelloIncomingEmergency] = []
   @Published var outgoingEmergency: ZelloOutgoingEmergency?
   @Published var history: HistoryViewState? = nil
+  @Published var settings: ZelloConsoleSettings? = nil
 
   private var cancellables: Set<AnyCancellable> = []
 
@@ -168,6 +169,13 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
         self?.history = history
       }
       .store(in: &cancellables)
+
+    settings = ZelloRepository.instance.settings
+    ZelloRepository.instance.$settings
+      .sink { [weak self] settings in
+        self?.settings = settings
+      }
+      .store(in: &cancellables)
   }
 
   func connect(credentials: ZelloCredentials) {
@@ -241,4 +249,12 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
     let contact = ZelloContact.channel(channel)
     ZelloRepository.instance.getHistory(contact: contact)
   }
+
+  func endCall(channel: ZelloChannel) {
+    guard let call = channel.dispatchInfo?.currentCall else {
+      return
+    }
+    ZelloRepository.instance.zello.end(call, on: channel)
+  }
 }
+
