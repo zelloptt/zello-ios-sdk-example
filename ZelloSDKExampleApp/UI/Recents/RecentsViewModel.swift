@@ -87,14 +87,14 @@ class RecentsViewModel: ObservableObject, ConnectivityProvider {
   }
 
   func connect(credentials: ZelloCredentials) {
-    ZelloRepository.instance.sdk.connect(credentials: credentials)
+    ZelloRepository.instance.zello.connect(credentials: credentials)
   }
 
   func disconnect() {
-    ZelloRepository.instance.sdk.disconnect()
+    ZelloRepository.instance.zello.disconnect()
   }
 
   func setAccountStatus(status: ZelloAccountStatus) {
-    ZelloRepository.instance.sdk.setAccountStatus(status: status)
+    ZelloRepository.instance.zello.setAccountStatus(status: status)
   }
 }

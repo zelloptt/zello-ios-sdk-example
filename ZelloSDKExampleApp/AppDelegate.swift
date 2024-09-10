@@ -16,7 +16,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
   }
 
   func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-    ZelloRepository.instance.sdk.registerForRemoteNotifications(deviceToken: deviceToken)
+    ZelloRepository.instance.zello.registerForRemoteNotifications(deviceToken: deviceToken)
   }
 
   func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

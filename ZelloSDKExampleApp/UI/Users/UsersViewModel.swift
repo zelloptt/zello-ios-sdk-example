@@ -150,54 +150,54 @@ class UsersViewModel: ObservableObject, ConnectivityProvider {
   }
 
   func connect(credentials: ZelloCredentials) {
-    ZelloRepository.instance.sdk.connect(credentials: credentials)
+    ZelloRepository.instance.zello.connect(credentials: credentials)
   }
 
   func disconnect() {
-    ZelloRepository.instance.sdk.disconnect()
+    ZelloRepository.instance.zello.disconnect()
   }
 
   func setSelectedContact(user: ZelloUser) {
     let contact = ZelloContact.user(user)
-    ZelloRepository.instance.sdk.setSelectedContact(contact: contact)
+    ZelloRepository.instance.zello.setSelectedContact(contact: contact)
   }
 
   func startSendingMessage(user: ZelloUser) {
     let contact = ZelloContact.user(user)
-    ZelloRepository.instance.sdk.startVoiceMessage(contact: contact)
+    ZelloRepository.instance.zello.startVoiceMessage(contact: contact)
   }
 
   func stopSendingMessage() {
-    ZelloRepository.instance.sdk.stopVoiceMessage()
+    ZelloRepository.instance.zello.stopVoiceMessage()
   }
 
   func sendImage(user: ZelloUser, image: UIImage) {
     let contact = ZelloContact.user(user)
-    ZelloRepository.instance.sdk.send(image, to: contact)
+    ZelloRepository.instance.zello.send(image, to: contact)
   }
 
   func sendText(user: ZelloUser, message: String) {
     let contact = ZelloContact.user(user)
-    ZelloRepository.instance.sdk.send(textMessage: message, to: contact)
+    ZelloRepository.instance.zello.send(textMessage: message, to: contact)
   }
 
   func sendAlert(user: ZelloUser, message: String) {
     let contact = ZelloContact.user(user)
-    ZelloRepository.instance.sdk.send(alertMessage: message, to: contact, using: nil)
+    ZelloRepository.instance.zello.send(alertMessage: message, to: contact, using: nil)
   }
 
   func setAccountStatus(status: ZelloAccountStatus) {
-    ZelloRepository.instance.sdk.setAccountStatus(status: status)
+    ZelloRepository.instance.zello.setAccountStatus(status: status)
   }
 
   func sendLocationTo(user: ZelloUser) {
     let contact = ZelloContact.user(user)
-    ZelloRepository.instance.sdk.sendLocation(to: contact)
+    ZelloRepository.instance.zello.sendLocation(to: contact)
   }
 
   func toggleMute(user: ZelloUser) {
     let contact = ZelloContact.user(user)
-    contact.isMuted ? ZelloRepository.instance.sdk.unmuteContact(contact: contact) : ZelloRepository.instance.sdk.muteContact(contact: contact)
+    contact.isMuted ? ZelloRepository.instance.zello.unmuteContact(contact: contact) : ZelloRepository.instance.zello.muteContact(contact: contact)
   }
 
   func getHistory(user: ZelloUser) {

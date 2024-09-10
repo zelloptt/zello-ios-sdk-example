@@ -6,7 +6,7 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
 
   static let instance = ZelloRepository()
 
-  let sdk = Zello.shared
+  let zello = Zello.shared
 
   @Published var connectionState: Zello.ConnectionState = .disconnected
   @Published var users: [ZelloUser] = []
@@ -36,9 +36,15 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
   @Published var recents: [ZelloRecentEntry] = []
   @Published var history: HistoryViewState? = nil
   @Published var activeHistoryVoiceMessage: ZelloHistoryVoiceMessage? = nil
+  @Published var settings: ZelloConsoleSettings? = nil
 
   init() {
-    sdk.delegate = self
+    zello.delegate = self
+    var configuration = ZelloConfiguration(appGroup: "group.com.yourCompany.shared")
+    #if DEBUG
+    configuration.pushNotificationEnvironment = .development
+    #endif
+    zello.configuration = configuration
   }
 
   func zelloDidStartConnecting(_ zello: Zello) {
@@ -137,7 +143,7 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
     self.lastIncomingAlertMessage = alertMessage
   }
 
-  func zello(_ zello: Zello, didSend alertMessage: ZelloSDK.ZelloAlertMessage) {
+  func zello(_ zello: Zello, didSend alertMessage: ZelloAlertMessage) {
     print("sent alert message")
   }
 
@@ -146,19 +152,19 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
   }
 
   func zello(_ zello: Zello, didStart outgoingEmergency: ZelloOutgoingEmergency) {
-    self.outgoingEmergency = sdk.outgoingEmergency
+    self.outgoingEmergency = zello.outgoingEmergency
   }
 
   func zello(_ zello: Zello, didStop outgoingEmergency: ZelloOutgoingEmergency) {
-    self.outgoingEmergency = sdk.outgoingEmergency
+    self.outgoingEmergency = zello.outgoingEmergency
   }
 
   func zello(_ zello: Zello, didStart incomingEmergency: ZelloIncomingEmergency) {
-    incomingEmergencies = sdk.incomingEmergencies
+    incomingEmergencies = zello.incomingEmergencies
   }
 
   func zello(_ zello: Zello, didStop incomingEmergency: ZelloIncomingEmergency) {
-    incomingEmergencies = sdk.incomingEmergencies
+    incomingEmergencies = zello.incomingEmergencies
   }
 
   func zello(_ zello: Zello, didUpdate recentEntries: [ZelloRecentEntry]) {
@@ -175,12 +181,16 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
     activeHistoryVoiceMessage = message
   }
 
-  func zello(_ zello: Zello, didStopHistoryPlayback message: ZelloHistoryVoiceMessage) {
+  func zello(_ zello: Zello, didFinishHistoryPlayback message: ZelloHistoryVoiceMessage) {
     activeHistoryVoiceMessage = nil
   }
 
+  func zello(_ zello: Zello, didUpdate settings: ZelloConsoleSettings) {
+    self.settings = settings
+  }
+
   func getHistory(contact: ZelloContact) {
-    history = HistoryViewState(contact: contact, messages: sdk.getHistory(contact: contact))
+    history = HistoryViewState(contact: contact, messages: zello.getHistory(contact: contact))
   }
 
   func clearHistory() {

@@ -1,5 +1,4 @@
 import SwiftUI
-import UIKit
 import ZelloSDK
 
 struct ChannelsView: View {
@@ -21,13 +20,17 @@ struct ChannelsView: View {
             LazyVStack {
               ForEach(viewModel.channels, id: \.name) { channel in
                 let isConnecting = viewModel.connectionViewState.connectionState == .connecting
+
+                let showEndCallButton = shouldShowEndCallButton(for: channel)
+
                 HStack {
-                  Details(viewModel: viewModel, channel: channel)
+                  Details(viewModel: viewModel, channel: channel, callStatus: channel.dispatchInfo?.currentCall?.status.rawValue)
                   ConnectionToggle(viewModel: viewModel, channel: channel)
                   Spacer()
                   ActionsButton(viewModel: viewModel,
                                 channel: channel,
                                 isMuted: channel.isMuted,
+                                showEndCallButton: showEndCallButton,
                                 showTextInputDialog: $showTextInputDialog,
                                 showAlertInputDialog: $showAlertInputDialog,
                                 channelInputText: $channelInputText,
@@ -128,6 +131,15 @@ struct ChannelsView: View {
     }
   }
 
+  private func shouldShowEndCallButton(for channel: ZelloChannel) -> Bool {
+      guard let dispatchInfo = channel.dispatchInfo,
+            let currentCall = dispatchInfo.currentCall else {
+        return false
+      }
+      return currentCall.status == .active &&
+             viewModel.settings?.allowsNonDispatchersToEndCalls == true
+    }
+
   private func updateAccountStatus(_ status: ZelloAccountStatus) {
     viewModel.setAccountStatus(status: status)
   }
@@ -135,6 +147,8 @@ struct ChannelsView: View {
   struct Details: View {
     @ObservedObject var viewModel: ChannelsViewModel
     let channel: ZelloChannel
+    // SwiftUI doesn't know how to properly observe changes in nested structs, so we need to lift this out
+    let callStatus: String?
 
     var body: some View {
       VStack {
@@ -145,12 +159,16 @@ struct ChannelsView: View {
         Text(channel.status == .connected ? "Connected" : channel.status == .connecting ? "Connecting" : "Disconnected")
           .bold(isSelectedContact)
           .frame(maxWidth: .infinity, alignment: .leading)
-        Text(channel.usersOnline.description)
+        Text(channel.usersOnline.description + " users connected")
           .bold(isSelectedContact)
           .frame(maxWidth: .infinity, alignment: .leading)
         if viewModel.outgoingEmergency?.channel == channel {
           Text("ACTIVE OUTGOING EMERGENCY")
             .bold(isSelectedContact)
+            .frame(maxWidth: .infinity, alignment: .leading)
+        }
+        if let callStatus {
+          Text("Call status: \(callStatus)")
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         if let emergency = viewModel.incomingEmergencies.first(where: { emergency in
@@ -204,6 +222,7 @@ struct ChannelsView: View {
     @ObservedObject var viewModel: ChannelsViewModel
     let channel: ZelloChannel
     let isMuted: Bool
+    let showEndCallButton: Bool
     @Binding var showTextInputDialog: Bool
     @Binding var showAlertInputDialog: Bool
     @Binding var channelInputText: String
@@ -243,6 +262,9 @@ struct ChannelsView: View {
             Button("Start Emergency", action: startEmergency)
           }
         }
+        if showEndCallButton {
+          Button("End Call", action: endCall)
+        }
         Button("Show History", action: showHistory)
       }
     }
@@ -273,9 +295,14 @@ struct ChannelsView: View {
     private func showHistory() {
       viewModel.getHistory(channel: channel)
     }
+
+    private func endCall() {
+      viewModel.endCall(channel: channel)
+    }
   }
 }
 
 #Preview {
   ChannelsView()
 }
+
