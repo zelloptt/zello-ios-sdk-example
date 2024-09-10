@@ -6,7 +6,7 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
 
   static let instance = ZelloRepository()
 
-  let sdk = Zello.shared
+  let zello = Zello.shared
 
   @Published var connectionState: Zello.ConnectionState = .disconnected
   @Published var users: [ZelloUser] = []
@@ -38,12 +38,12 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
   @Published var activeHistoryVoiceMessage: ZelloHistoryVoiceMessage? = nil
 
   init() {
-    sdk.delegate = self
+    zello.delegate = self
+    var configuration = ZelloConfiguration(appGroup: "group.com.yourCompany.shared")
     #if DEBUG
-    sdk.configure(isDebugBuild: true, appGroup: "group.com.yourCompany.shared")
-    #else
-    sdk.configure(isDebugBuild: false, appGroup: "group.com.yourCompany.shared")
+    configuration.pushNotificationEnvironment = .development
     #endif
+    zello.configuration = configuration
   }
 
   func zelloDidStartConnecting(_ zello: Zello) {
@@ -151,19 +151,19 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
   }
 
   func zello(_ zello: Zello, didStart outgoingEmergency: ZelloOutgoingEmergency) {
-    self.outgoingEmergency = sdk.outgoingEmergency
+    self.outgoingEmergency = zello.outgoingEmergency
   }
 
   func zello(_ zello: Zello, didStop outgoingEmergency: ZelloOutgoingEmergency) {
-    self.outgoingEmergency = sdk.outgoingEmergency
+    self.outgoingEmergency = zello.outgoingEmergency
   }
 
   func zello(_ zello: Zello, didStart incomingEmergency: ZelloIncomingEmergency) {
-    incomingEmergencies = sdk.incomingEmergencies
+    incomingEmergencies = zello.incomingEmergencies
   }
 
   func zello(_ zello: Zello, didStop incomingEmergency: ZelloIncomingEmergency) {
-    incomingEmergencies = sdk.incomingEmergencies
+    incomingEmergencies = zello.incomingEmergencies
   }
 
   func zello(_ zello: Zello, didUpdate recentEntries: [ZelloRecentEntry]) {
@@ -185,7 +185,7 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
   }
 
   func getHistory(contact: ZelloContact) {
-    history = HistoryViewState(contact: contact, messages: sdk.getHistory(contact: contact))
+    history = HistoryViewState(contact: contact, messages: zello.getHistory(contact: contact))
   }
 
   func clearHistory() {

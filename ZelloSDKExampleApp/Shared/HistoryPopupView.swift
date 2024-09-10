@@ -38,7 +38,7 @@ struct HistoryPopupView: View {
                       if let voiceMessage = message as? ZelloHistoryVoiceMessage {
                         Text("\(voiceMessage.duration) seconds")
                       } else if let imageMessage = message as? ZelloHistoryImageMessage,
-                         let message = ZelloRepository.instance.sdk.loadHistoryImage(for: imageMessage) {
+                         let message = ZelloRepository.instance.zello.loadHistoryImage(for: imageMessage) {
                         Image(uiImage: message)
                       } else if let locationMessage = message as? ZelloHistoryLocationMessage {
                         MapView(coordinate: locationMessage.location.coordinate)
@@ -54,9 +54,9 @@ struct HistoryPopupView: View {
                   .onTapGesture {
                     if let voiceMessage = message as? ZelloHistoryVoiceMessage {
                       if ZelloRepository.instance.activeHistoryVoiceMessage != nil {
-                        ZelloRepository.instance.sdk.stopHistoryMessagePlayback()
+                        ZelloRepository.instance.zello.stopHistoryMessagePlayback()
                       } else {
-                        ZelloRepository.instance.sdk.playHistoryMessage(voiceMessage)
+                        ZelloRepository.instance.zello.playHistoryMessage(voiceMessage)
                       }
                     }
                   }
