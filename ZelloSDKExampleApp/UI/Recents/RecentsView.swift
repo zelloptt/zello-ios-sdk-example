@@ -84,6 +84,8 @@ struct RecentsView: View {
         return "\(channelUser) : \(recent.contact.name)"
       } else if let user = recent.contact.asZelloUser() {
         return "\(user.displayName) (\(user.name))"
+      } else if let conversation = recent.contact.asZelloGroupConversation() {
+        return conversation.displayName
       }
       return recent.contact.name
     }

@@ -20,6 +20,7 @@ class UsersViewModel: ObservableObject, ConnectivityProvider {
   @Published var incomingLocationMessage: ZelloLocationMessage?
   @Published var accountStatus: ZelloAccountStatus?
   @Published var history: HistoryViewState? = nil
+  @Published var settings: ZelloConsoleSettings? = nil
 
   private var cancellables: Set<AnyCancellable> = []
 
@@ -145,6 +146,13 @@ class UsersViewModel: ObservableObject, ConnectivityProvider {
       .sink { [weak self] history in
         self?.showHistoryPopup = history != nil
         self?.history = history
+      }
+      .store(in: &cancellables)
+
+    settings = ZelloRepository.instance.settings
+    ZelloRepository.instance.$settings
+      .sink { [weak self] settings in
+        self?.settings = settings
       }
       .store(in: &cancellables)
   }

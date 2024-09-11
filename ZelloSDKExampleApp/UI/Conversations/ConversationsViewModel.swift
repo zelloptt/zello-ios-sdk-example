@@ -2,9 +2,10 @@ import Combine
 import UIKit
 import ZelloSDK
 
-class ChannelsViewModel: ObservableObject, ConnectivityProvider {
-  @Published var channels: [ZelloChannel] = []
+class ConversationsViewModel: ObservableObject, ConnectivityProvider {
   @Published var connectionViewState: ConnectionViewState
+  @Published var groupConversations: [ZelloGroupConversation] = []
+  @Published var users: [ZelloUser] = []
   @Published var statusMessage: String?
   @Published var selectedContact: ZelloContact? = nil
   @Published var outgoingVoiceMessageViewState: OutgoingVoiceMessageViewState?
@@ -19,9 +20,6 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
   @Published var showImagePopup = false
   @Published var showAlertPopup = false
   @Published var showHistoryPopup = false
-  @Published var emergencyChannel: ZelloChannel?
-  @Published var incomingEmergencies: [ZelloIncomingEmergency] = []
-  @Published var outgoingEmergency: ZelloOutgoingEmergency?
   @Published var history: HistoryViewState? = nil
   @Published var settings: ZelloConsoleSettings? = nil
 
@@ -34,7 +32,7 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
   var isConnecting: Bool {
     connectionViewState.connectionState == .connecting
   }
-
+  
   init() {
     connectionViewState = ConnectionViewState(connectionState: ZelloRepository.instance.connectionState)
     ZelloRepository.instance.$connectionState
@@ -46,10 +44,17 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
       }
       .store(in: &cancellables)
 
-    channels = ZelloRepository.instance.channels
-    ZelloRepository.instance.$channels
-      .sink { [weak self] channels in
-        self?.channels = channels
+    groupConversations = ZelloRepository.instance.groupConversations
+    ZelloRepository.instance.$groupConversations
+      .sink { [weak self] groupConversations in
+        self?.groupConversations = groupConversations
+      }
+      .store(in: &cancellables)
+
+    users = ZelloRepository.instance.users
+    ZelloRepository.instance.$users
+      .sink { [weak self] users in
+        self?.users = users
       }
       .store(in: &cancellables)
 
@@ -144,24 +149,6 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
       }
       .store(in: &cancellables)
 
-    ZelloRepository.instance.$outgoingEmergency
-      .sink { [weak self] outgoingEmergency in
-        self?.outgoingEmergency = outgoingEmergency
-      }
-      .store(in: &cancellables)
-
-    ZelloRepository.instance.$incomingEmergencies
-      .sink { [weak self] incomingEmergencies in
-        self?.incomingEmergencies = incomingEmergencies
-      }
-      .store(in: &cancellables)
-
-    ZelloRepository.instance.$emergencyChannel
-      .sink { [weak self] emergencyChannel in
-        self?.emergencyChannel = emergencyChannel
-      }
-      .store(in: &cancellables)
-
     history = ZelloRepository.instance.history
     ZelloRepository.instance.$history
       .sink { [weak self] history in
@@ -178,21 +165,21 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
       .store(in: &cancellables)
   }
 
-  func connect(credentials: ZelloCredentials) {
-    ZelloRepository.instance.zello.connect(credentials:credentials)
+  func connect(credentials: ZelloSDK.ZelloCredentials) {
+    ZelloRepository.instance.zello.connect(credentials: credentials)
   }
-
+  
   func disconnect() {
     ZelloRepository.instance.zello.disconnect()
   }
 
-  func setSelectedContact(channel: ZelloChannel) {
-    let contact = ZelloContact.channel(channel)
+  func setSelectedContact(conversation: ZelloGroupConversation) {
+    let contact = ZelloContact.conversation(conversation)
     ZelloRepository.instance.zello.setSelectedContact(contact: contact)
   }
 
-  func startSendingMessage(channel: ZelloChannel) {
-    let contact = ZelloContact.channel(channel)
+  func startSendingMessage(conversation: ZelloGroupConversation) {
+    let contact = ZelloContact.conversation(conversation)
     ZelloRepository.instance.zello.startVoiceMessage(contact: contact)
   }
 
@@ -200,16 +187,16 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
     ZelloRepository.instance.zello.stopVoiceMessage()
   }
 
-  func connect(to channel: ZelloChannel) {
-    ZelloRepository.instance.zello.connect(to: channel)
+  func connect(to conversation: ZelloGroupConversation) {
+    ZelloRepository.instance.zello.connect(to: conversation)
   }
 
-  func disconnect(from channel: ZelloChannel) {
-    ZelloRepository.instance.zello.disconnect(from: channel)
+  func disconnect(from conversation: ZelloGroupConversation) {
+    ZelloRepository.instance.zello.disconnect(from: conversation)
   }
 
-  func sendImage(channel: ZelloChannel, image: UIImage) {
-    let contact = ZelloContact.channel(channel)
+  func sendImage(conversation: ZelloGroupConversation, image: UIImage) {
+    let contact = ZelloContact.conversation(conversation)
     ZelloRepository.instance.zello.send(image, to: contact)
   }
 
@@ -217,44 +204,45 @@ class ChannelsViewModel: ObservableObject, ConnectivityProvider {
     ZelloRepository.instance.zello.setAccountStatus(status: status)
   }
 
-  func sendText(channel: ZelloChannel, message: String) {
-    let contact = ZelloContact.channel(channel)
+  func sendText(conversation: ZelloGroupConversation, message: String) {
+    let contact = ZelloContact.conversation(conversation)
     ZelloRepository.instance.zello.send(textMessage: message, to: contact)
   }
 
-  func sendAlert(channel: ZelloChannel, message: String, level: ZelloAlertMessage.ChannelLevel? = nil) {
-    let contact = ZelloContact.channel(channel)
+  func sendAlert(conversation: ZelloGroupConversation, message: String, level: ZelloAlertMessage.ChannelLevel? = nil) {
+    let contact = ZelloContact.conversation(conversation)
     ZelloRepository.instance.zello.send(alertMessage: message, to: contact, using: level)
   }
 
-  func sendLocationTo(channel: ZelloChannel) {
-    let contact = ZelloContact.channel(channel)
+  func sendLocationTo(conversation: ZelloGroupConversation) {
+    let contact = ZelloContact.conversation(conversation)
     ZelloRepository.instance.zello.sendLocation(to: contact)
   }
 
-  func toggleMute(channel: ZelloChannel) {
-    let contact = ZelloContact.channel(channel)
+  func rename(_ conversation: ZelloGroupConversation, to newName: String) {
+    ZelloRepository.instance.zello.rename(conversation, to: newName)
+  }
+
+  func createConversation(users: [ZelloUser]) {
+    ZelloRepository.instance.zello.createGroupConversation(users: users, displayName: nil)
+  }
+
+  func add(_ users: [ZelloUser], to conversation: ZelloGroupConversation) {
+    ZelloRepository.instance.zello.add(users, to: conversation)
+  }
+
+  func toggleMute(conversation: ZelloGroupConversation) {
+    let contact = ZelloContact.conversation(conversation)
     contact.isMuted ? ZelloRepository.instance.zello.unmuteContact(contact: contact) : ZelloRepository.instance.zello.muteContact(contact: contact)
   }
 
-  func startEmergency() {
-    ZelloRepository.instance.zello.startEmergency()
-  }
-
-  func stopEmergency() {
-    ZelloRepository.instance.zello.stopEmergency()
-  }
-
-  func getHistory(channel: ZelloChannel) {
-    let contact = ZelloContact.channel(channel)
+  func getHistory(conversation: ZelloGroupConversation) {
+    let contact = ZelloContact.conversation(conversation)
     ZelloRepository.instance.getHistory(contact: contact)
   }
 
-  func endCall(channel: ZelloChannel) {
-    guard let call = channel.dispatchInfo?.currentCall else {
-      return
-    }
-    ZelloRepository.instance.zello.end(call, on: channel)
+  func leave(_ conversation: ZelloGroupConversation) {
+    ZelloRepository.instance.zello.leave(conversation)
   }
-}
 
+}

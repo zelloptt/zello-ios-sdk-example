@@ -11,18 +11,20 @@ PODS:
   - SDWebImage (5.19.7):
     - SDWebImage/Core (= 5.19.7)
   - SDWebImage/Core (5.19.7)
+  - SnowplowTracker (6.0.8)
   - zello-opus-ios (1.0.1)
-  - ZelloSDK (0.4.0):
+  - ZelloSDK (1.0.0):
     - CocoaAsyncSocket (~> 7.6)
     - CocoaLumberjack/Swift (~> 3.7)
     - OpenSSL-Universal (~> 1.1)
     - PhoneNumberKit/PhoneNumberKitCore (~> 3.6)
     - PromisesSwift (~> 2.1)
     - SDWebImage (~> 5.13)
+    - SnowplowTracker (~> 6.0)
     - zello-opus-ios (~> 1.0)
 
 DEPENDENCIES:
-  - ZelloSDK (~> 0.4.0)
+  - ZelloSDK (~> 1.0.0)
 
 SPEC REPOS:
   trunk:
@@ -33,6 +35,7 @@ SPEC REPOS:
     - PromisesObjC
     - PromisesSwift
     - SDWebImage
+    - SnowplowTracker
     - zello-opus-ios
     - ZelloSDK
 
@@ -44,9 +47,10 @@ SPEC CHECKSUMS:
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
   SDWebImage: 8a6b7b160b4d710e2a22b6900e25301075c34cb3
+  SnowplowTracker: c7dcb63a584038ac3459bc803bfedec98cf87de9
   zello-opus-ios: 8c1f08799d7a147c86f21ec2a18f7b19f8c2ceed
-  ZelloSDK: 85bfe4d3f07077163ff0711b7fd24aa9b28789f9
+  ZelloSDK: 38bd1581f93072d521ee708064577fe009349f02
 
-PODFILE CHECKSUM: 60c1219dc719fa1a13b42ac86949a576482ab6e0
+PODFILE CHECKSUM: 3a005f8a86cb592f251f81749205f739c39b7541
 
 COCOAPODS: 1.15.2

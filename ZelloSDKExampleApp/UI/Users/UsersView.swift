@@ -11,6 +11,8 @@ struct UsersView: View {
   @State private var userInputText = ""
   @State private var selectedUserForText: ZelloUser?
 
+  private let profilePictureSize: CGFloat = 40
+
   var body: some View {
     NavigationView {
       ZStack {
@@ -19,11 +21,34 @@ struct UsersView: View {
             LazyVStack {
               ForEach(viewModel.users, id: \.name) { user in
                 HStack {
+                  if let picture = user.profilePictureThumbnailURL {
+                    AsyncImage(url: picture) { phase in
+                      switch phase {
+                      case .empty:
+                        Color.gray // Placeholder while loading
+                      case .success(let image):
+                        image
+                          .resizable()
+                          .scaledToFill()
+                          .clipShape(Circle())
+                      case .failure(_):
+                        Color.red // Display red if image fails to load
+                      @unknown default:
+                        Color.blue // Fallback for future cases
+                      }
+                    }
+                    .frame(width: profilePictureSize, height: profilePictureSize)
+                  }
+
                   Details(viewModel: viewModel, user: user)
                   Spacer()
-                  ActionsButton(viewModel: viewModel,
+                  ActionsButton(viewModel: viewModel, 
                                 user: user,
                                 isMuted: user.isMuted,
+                                showSendLocation: viewModel.settings?.allowsLocationMessages == true,
+                                showSendImage: viewModel.settings?.allowsImageMessages == true,
+                                showSendAlert: viewModel.settings?.allowsAlertMessages == true,
+                                showSendText: viewModel.settings?.allowsTextMessages == true,
                                 showTextInputDialog: $showTextInputDialog,
                                 showAlertInputDialog: $showAlertInputDialog,
                                 userInputText: $userInputText,
@@ -79,6 +104,7 @@ struct UsersView: View {
             text: $userInputText,
             action: .text,
             contact: contact,
+            conversation: nil,
             onSend: {
               viewModel.sendText(user: selectedUser, message: userInputText)
             }
@@ -93,6 +119,7 @@ struct UsersView: View {
             text: $userInputText,
             action: .alert,
             contact: contact,
+            conversation: nil,
             onSend: {
               viewModel.sendAlert(user: selectedUser, message: userInputText)
             }
@@ -180,6 +207,10 @@ struct UsersView: View {
     @ObservedObject var viewModel: UsersViewModel
     let user: ZelloUser
     let isMuted: Bool
+    let showSendLocation: Bool
+    let showSendImage: Bool
+    let showSendAlert: Bool
+    let showSendText: Bool
     @Binding var showTextInputDialog: Bool
     @Binding var showAlertInputDialog: Bool
     @Binding var userInputText: String
@@ -199,18 +230,26 @@ struct UsersView: View {
       .buttonStyle(PlainButtonStyle())
       .contentShape(Rectangle())
       .contextMenu {
-        Button("Send Image", action: sendImage)
-        Button("Send Text", action: {
-          selectedUserForText = user
-          userInputText = ""
-          showTextInputDialog = true
-        })
-        Button("Send Alert", action: {
-          selectedUserForText = user
-          userInputText = ""
-          showAlertInputDialog = true
-        })
-        Button("Send Location", action: sendLocation)
+        if showSendImage {
+          Button("Send Image", action: sendImage)
+        }
+        if showSendText {
+          Button("Send Text", action: {
+            selectedUserForText = user
+            userInputText = ""
+            showTextInputDialog = true
+          })
+        }
+        if showSendAlert {
+          Button("Send Alert", action: {
+            selectedUserForText = user
+            userInputText = ""
+            showAlertInputDialog = true
+          })
+        }
+        if showSendLocation {
+          Button("Send Location", action: sendLocation)
+        }
         Button(isMuted ? "Unmute" : "Mute", action: toggleMute)
         Button("Show History", action: showHistory)
       }

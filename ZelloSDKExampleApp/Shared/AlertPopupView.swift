@@ -54,7 +54,11 @@ struct AlertPopupView: View {
     guard let alertMessage else { return nil }
 
     if let author = alertMessage.channelUser {
-      return "\(author.name) -> \(alertMessage.contact.name)"
+      var displayName = alertMessage.contact.name
+      if let conversation = alertMessage.contact.asZelloGroupConversation() {
+        displayName = conversation.displayName
+      }
+      return "\(author.name) -> \(displayName)"
     }
     return alertMessage.contact.name
   }

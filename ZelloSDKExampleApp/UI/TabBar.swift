@@ -15,6 +15,10 @@ struct TabBar: View {
         .tabItem {
           Label("Channels", systemImage: "person.3")
         }
+      ConversationsView()
+        .tabItem {
+          Label("Conversations", systemImage: "person.2")
+        }
     }
   }
 }
