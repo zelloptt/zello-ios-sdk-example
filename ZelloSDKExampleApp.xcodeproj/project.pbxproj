@@ -43,6 +43,10 @@
 		41C742882BB4974A00D519F7 /* ChannelsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C742862BB4974A00D519F7 /* ChannelsViewModel.swift */; };
 		41C742A32BB498E500D519F7 /* SessionConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C742A22BB498E500D519F7 /* SessionConnectButton.swift */; };
 		41C742A52BB49B3300D519F7 /* ListItemTalkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41C742A42BB49B3300D519F7 /* ListItemTalkButton.swift */; };
+		BA1D5B4C2C9A446C00C703D8 /* ConversationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D5B492C9A446C00C703D8 /* ConversationsView.swift */; };
+		BA1D5B4D2C9A446C00C703D8 /* ConversationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D5B4A2C9A446C00C703D8 /* ConversationsViewModel.swift */; };
+		BA1D5B502C9A461400C703D8 /* UserSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D5B4E2C9A461400C703D8 /* UserSelectionView.swift */; };
+		BA1D5B512C9A461400C703D8 /* ConnectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA1D5B4F2C9A461400C703D8 /* ConnectButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +119,10 @@
 		41FCD7172BB32EF900F06DDE /* ZelloSDKExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZelloSDKExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0C5266FA4CEED302DDF44FE /* Pods_SDKNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SDKNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B350D77533A95A10E3863DA7 /* Pods-ZelloSDKExampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ZelloSDKExampleApp.debug.xcconfig"; path = "Target Support Files/Pods-ZelloSDKExampleApp/Pods-ZelloSDKExampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		BA1D5B492C9A446C00C703D8 /* ConversationsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsView.swift; sourceTree = "<group>"; };
+		BA1D5B4A2C9A446C00C703D8 /* ConversationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsViewModel.swift; sourceTree = "<group>"; };
+		BA1D5B4E2C9A461400C703D8 /* UserSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSelectionView.swift; sourceTree = "<group>"; };
+		BA1D5B4F2C9A461400C703D8 /* ConnectButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectButton.swift; sourceTree = "<group>"; };
 		BB9FBB5493D793D4A736E2C6 /* Pods-SDKNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDKNotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-SDKNotificationServiceExtension/Pods-SDKNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		CB79221BBBB40DCD8D0ECCA1 /* Pods_ZelloSDKExampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ZelloSDKExampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D00DED424D00407A04E92276 /* Pods-SDKNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDKNotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-SDKNotificationServiceExtension/Pods-SDKNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
@@ -187,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				00E5E4282C0F95000028F485 /* AlertPopupView.swift */,
+				BA1D5B4F2C9A461400C703D8 /* ConnectButton.swift */,
 				00B26A1B2BED169300BBD78D /* ConnectivityProvider.swift */,
 				00D7B9A12BF665BB005AB5F1 /* ConnectNavBarButton.swift */,
 				00D7B99B2BF409A8005AB5F1 /* ImagePopupView.swift */,
@@ -199,6 +208,7 @@
 				00B26A192BED0EBC00BBD78D /* StatusMessageView.swift */,
 				00D7B9B62BFD3A81005AB5F1 /* TextPopupView.swift */,
 				419D06FB2C46D99E0028FB3C /* HistoryPopupView.swift */,
+				BA1D5B4E2C9A461400C703D8 /* UserSelectionView.swift */,
 				416751012BB3AEA90095410A /* Types */,
 			);
 			path = Shared;
@@ -232,6 +242,7 @@
 				41B79CB22C3C7B0E001DD052 /* Recents */,
 				41FCD72C2BB3377C00F06DDE /* Users */,
 				41FCD72D2BB3378A00F06DDE /* Channels */,
+				BA1D5B4B2C9A446C00C703D8 /* Conversations */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -305,6 +316,15 @@
 				41C742862BB4974A00D519F7 /* ChannelsViewModel.swift */,
 			);
 			path = Channels;
+			sourceTree = "<group>";
+		};
+		BA1D5B4B2C9A446C00C703D8 /* Conversations */ = {
+			isa = PBXGroup;
+			children = (
+				BA1D5B492C9A446C00C703D8 /* ConversationsView.swift */,
+				BA1D5B4A2C9A446C00C703D8 /* ConversationsViewModel.swift */,
+			);
+			path = Conversations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -485,6 +505,7 @@
 				00D7B9B72BFD3A81005AB5F1 /* TextPopupView.swift in Sources */,
 				41B79CB42C3C7B1A001DD052 /* RecentsView.swift in Sources */,
 				0071CC4B2C08B722002533CB /* MapView.swift in Sources */,
+				BA1D5B512C9A461400C703D8 /* ConnectButton.swift in Sources */,
 				00B26A232BED1BF200BBD78D /* SignInView.swift in Sources */,
 				00D7B9AB2BF7DB53005AB5F1 /* StatusActionSheet.swift in Sources */,
 				41C742802BB4969C00D519F7 /* IncomingVoiceMessageViewState.swift in Sources */,
@@ -496,15 +517,18 @@
 				00D7B99C2BF409A8005AB5F1 /* ImagePopupView.swift in Sources */,
 				00B26A1C2BED169300BBD78D /* ConnectivityProvider.swift in Sources */,
 				41C742A32BB498E500D519F7 /* SessionConnectButton.swift in Sources */,
+				BA1D5B4D2C9A446C00C703D8 /* ConversationsViewModel.swift in Sources */,
 				0071CC492C08B706002533CB /* LocationPopupView.swift in Sources */,
 				41C742832BB4973300D519F7 /* UsersView.swift in Sources */,
 				00B26A1A2BED0EBC00BBD78D /* StatusMessageView.swift in Sources */,
+				BA1D5B502C9A461400C703D8 /* UserSelectionView.swift in Sources */,
 				41B79CB62C3C7B40001DD052 /* RecentsViewModel.swift in Sources */,
 				00E5E4292C0F95000028F485 /* AlertPopupView.swift in Sources */,
 				41C742872BB4974A00D519F7 /* ChannelsView.swift in Sources */,
 				419D06FE2C46D9BA0028FB3C /* HistoryViewState.swift in Sources */,
 				41C7427C2BB4964700D519F7 /* ConnectionViewState.swift in Sources */,
 				41C742762BB492F500D519F7 /* ZelloService.swift in Sources */,
+				BA1D5B4C2C9A446C00C703D8 /* ConversationsView.swift in Sources */,
 				41C742882BB4974A00D519F7 /* ChannelsViewModel.swift in Sources */,
 				41C742642BB48FE800D519F7 /* ZelloSDKExampleAppApp.swift in Sources */,
 				41C742842BB4973300D519F7 /* UsersViewModel.swift in Sources */,

@@ -64,7 +64,11 @@ struct ImagePopupView: View {
     guard let imageMessage else { return nil }
 
     if let author = imageMessage.channelUser {
-      return "\(author.name) -> \(imageMessage.contact.name)"
+      var displayName = imageMessage.contact.name
+      if let conversation = imageMessage.contact.asZelloGroupConversation() {
+        displayName = conversation.displayName
+      }
+      return "\(author.name) -> \(displayName)"
     }
     return imageMessage.contact.name
   }

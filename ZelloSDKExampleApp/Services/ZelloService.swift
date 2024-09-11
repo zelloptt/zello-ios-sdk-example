@@ -11,6 +11,7 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
   @Published var connectionState: Zello.ConnectionState = .disconnected
   @Published var users: [ZelloUser] = []
   @Published var channels: [ZelloChannel] = []
+  @Published var groupConversations: [ZelloGroupConversation] = []
   @Published var selectedContact: ZelloContact? = nil
   @Published var statusMessage: String? = nil {
     didSet {
@@ -69,6 +70,7 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
   func zelloDidUpdateContactList(_ zello: Zello) {
     users = zello.users
     channels = zello.channels
+    groupConversations = zello.groupConversations
     emergencyChannel = zello.emergencyChannel
   }
 
@@ -124,7 +126,7 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
   }
 
   func zello(_ zello: Zello, didFailToSend textMessage: ZelloTextMessage) {
-    statusMessage = "Failed to send image message"
+    statusMessage = "Failed to send text message"
   }
 
   func zello(_ zello: Zello, didReceive locationMessage: ZelloLocationMessage) {
@@ -136,7 +138,7 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
   }
 
   func zello(_ zello: Zello, didFailToSend locationMessage: ZelloLocationMessage) {
-    statusMessage = "Failed to send image message"
+    statusMessage = "Failed to send location message"
   }
 
   func zello(_ zello: Zello, didReceive alertMessage: ZelloAlertMessage) {
@@ -148,7 +150,7 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
   }
 
   func zello(_ zello: Zello, didFailToSend alertMessage: ZelloAlertMessage) {
-    statusMessage = "Failed to send image message"
+    statusMessage = "Failed to send alert message"
   }
 
   func zello(_ zello: Zello, didStart outgoingEmergency: ZelloOutgoingEmergency) {
@@ -196,4 +198,29 @@ class ZelloRepository: Zello.Delegate, ObservableObject {
   func clearHistory() {
     history = nil
   }
+
+  func zello(_ zello: Zello, didRename conversation: ZelloGroupConversation) {
+    groupConversations = zello.groupConversations
+  }
+
+  func zello(_ zello: Zello, didJoin conversation: ZelloGroupConversation) {
+    groupConversations = zello.groupConversations
+  }
+
+  func zello(_ zello: Zello, didCreate conversation: ZelloGroupConversation) {
+    groupConversations = zello.groupConversations
+  }
+
+  func zello(_ zello: Zello, didAdd users: [ZelloGroupConversationUser], to conversation: ZelloGroupConversation) {
+    groupConversations = zello.groupConversations
+  }
+
+  func zello(_ zello: Zello, didLeave conversation: ZelloGroupConversation) {
+    groupConversations = zello.groupConversations
+  }
+
+  func zello(_ zello: Zello, didRemove users: [ZelloGroupConversationUser], from conversation: ZelloGroupConversation) {
+    groupConversations = zello.groupConversations
+  }
+
 }

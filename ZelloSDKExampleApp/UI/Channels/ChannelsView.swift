@@ -31,6 +31,10 @@ struct ChannelsView: View {
                                 channel: channel,
                                 isMuted: channel.isMuted,
                                 showEndCallButton: showEndCallButton,
+                                showSendLocation: channel.channelOptions.allowLocations && viewModel.settings?.allowsLocationMessages == true && channel.status == .connected,
+                                showSendImage: viewModel.settings?.allowsImageMessages == true && channel.status == .connected,
+                                showSendAlert: channel.channelOptions.allowAlerts && viewModel.settings?.allowsAlertMessages == true && channel.status == .connected,
+                                showSendText: channel.channelOptions.allowTextMessages && viewModel.settings?.allowsTextMessages == true && channel.status == .connected,
                                 showTextInputDialog: $showTextInputDialog,
                                 showAlertInputDialog: $showAlertInputDialog,
                                 channelInputText: $channelInputText,
@@ -91,6 +95,7 @@ struct ChannelsView: View {
             text: $channelInputText,
             action: .text,
             contact: contact,
+            conversation: nil,
             onSend: {
               viewModel.sendText(channel: selectedChannel, message: channelInputText)
             }
@@ -106,6 +111,7 @@ struct ChannelsView: View {
             selectedLevel: $selectedLevel,
             action: .alert,
             contact: contact,
+            conversation: nil,
             onSend: {
               viewModel.sendAlert(channel: selectedChannel, message: channelInputText, level: selectedLevel)
             }
@@ -191,9 +197,9 @@ struct ChannelsView: View {
         .disabled(channel.status == .connecting)
         .onTapGesture {
           if channel.status == .connected {
-            viewModel.disconnectChannel(channel: channel)
+            viewModel.disconnect(from: channel)
           } else {
-            viewModel.connectChannel(channel: channel)
+            viewModel.connect(to: channel)
           }
         }
     }
@@ -223,6 +229,10 @@ struct ChannelsView: View {
     let channel: ZelloChannel
     let isMuted: Bool
     let showEndCallButton: Bool
+    let showSendLocation: Bool
+    let showSendImage: Bool
+    let showSendAlert: Bool
+    let showSendText: Bool
     @Binding var showTextInputDialog: Bool
     @Binding var showAlertInputDialog: Bool
     @Binding var channelInputText: String
@@ -242,19 +252,29 @@ struct ChannelsView: View {
       .buttonStyle(PlainButtonStyle())
       .contentShape(Rectangle())
       .contextMenu {
-        Button("Send Image", action: sendImage)
-        Button("Send Text", action: {
-          selectedChannelForText = channel
-          channelInputText = ""
-          showTextInputDialog = true
-        })
-        Button("Send Alert", action: {
-          selectedChannelForText = channel
-          channelInputText = ""
-          showAlertInputDialog = true
-        })
-        Button("Send Location", action: sendLocation)
-        Button(isMuted ? "Unmute" : "Mute", action: toggleMute)
+        if showSendImage {
+          Button("Send Image", action: sendImage)
+        }
+        if showSendText {
+          Button("Send Text", action: {
+            selectedChannelForText = channel
+            channelInputText = ""
+            showTextInputDialog = true
+          })
+        }
+        if showSendAlert {
+          Button("Send Alert", action: {
+            selectedChannelForText = channel
+            channelInputText = ""
+            showAlertInputDialog = true
+          })
+        }
+        if showSendLocation {
+          Button("Send Location", action: sendLocation)
+        }
+        if channel.status == .connected {
+          Button(isMuted ? "Unmute" : "Mute", action: toggleMute)
+        }
         if viewModel.emergencyChannel == channel {
           if viewModel.outgoingEmergency != nil {
             Button("Stop Emergency", action: stopEmergency)

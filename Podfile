@@ -17,7 +17,7 @@ target 'ZelloSDKExampleApp' do
   use_frameworks!
 
   # Pods for ZelloSDKExampleApp
-  pod "ZelloSDK", "~> 0.4.0"
+  pod "ZelloSDK", "~> 1.0.0"
 
 end
 
@@ -26,7 +26,7 @@ target 'SDKNotificationServiceExtension' do
   use_frameworks!
 
   # Pods for SDKNotificationServiceExtension
-  pod "ZelloSDK", "~> 0.4.0"
+  pod "ZelloSDK", "~> 1.0.0"
 
 end
 

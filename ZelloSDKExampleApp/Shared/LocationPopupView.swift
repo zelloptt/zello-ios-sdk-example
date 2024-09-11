@@ -61,7 +61,11 @@ struct LocationPopupView: View {
     guard let locationMessage else { return nil }
 
     if let author = locationMessage.channelUser {
-      return "\(author.name) -> \(locationMessage.contact.name)"
+      var displayName = locationMessage.contact.name
+      if let conversation = locationMessage.contact.asZelloGroupConversation() {
+        displayName = conversation.displayName
+      }
+      return "\(author.name) -> \(displayName)"
     }
     return locationMessage.contact.name
   }
