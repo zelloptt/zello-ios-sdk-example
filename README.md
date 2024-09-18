@@ -29,3 +29,13 @@ Zello’s SDK example app requires the following configurations:
 ## Open the Xcode workspace
 
 Open the `ZelloSDKExampleApp.xcworkspace` project. This will launch the Zello SDK workspace, allowing you to build and run the project. 
+
+
+## Connect Your Zello Work Network
+
+To utilize Zello’s SDK functionality, connect the example app to your Zello Work network:
+
+- Tap Connect in the upper-right corner of your screen.
+- Enter your username, password, and network name.
+
+Once signed in to Zello Work, you can send push-to-talk (PTT) messages to your direct contacts and channels.
