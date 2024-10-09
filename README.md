@@ -30,6 +30,15 @@ Zello’s SDK example app requires the following configurations:
 
 Open the `ZelloSDKExampleApp.xcworkspace` project. This will launch the Zello SDK workspace, allowing you to build and run the project. 
 
+## Provision the application
+
+Using the Project navigator in the left sidebar, open ZelloSDKExampleApp.xcodeproj in the project editor, select the ZelloSDKExampleApp target, and switch to the Signing & Capabilities tab. If you see errors related to provisioning profiles under the Signing section, you may need to reconfigure your entitlements:
+
+1. Change the Team to a valid iOS development team (not Personal Team).
+1. Change the Bundle Identifier to something unique.
+1. Under the App Groups section, remove any app group that is highlighted in red, then check any remaining app groups.
+1. Switch to the SDKNotificationService target. Under the Signing section, change the Bundle Identifier to something that begins with the other target’s bundle identifier.
+1. Under the App Groups section, remove any app group that is highlighted in red, then check any remaining app groups.
 
 ## Connect Your Zello Work Network
 
