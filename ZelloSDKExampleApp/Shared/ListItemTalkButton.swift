@@ -24,8 +24,10 @@ struct ListItemTalkButton: View {
     .simultaneousGesture(
       DragGesture(minimumDistance: 0)
         .onChanged { _ in
-          isPressed = true
-          onDown()
+          if !isPressed {
+            isPressed = true
+            onDown()
+          }
         }
         .onEnded { _ in
           isPressed = false
