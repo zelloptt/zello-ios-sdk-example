@@ -1,21 +1,19 @@
 PODS:
-  - CocoaAsyncSocket (7.6.5)
-  - CocoaLumberjack/Core (3.8.5)
-  - CocoaLumberjack/Swift (3.8.5):
+  - CocoaLumberjack/Core (3.9.0)
+  - CocoaLumberjack/Swift (3.9.0):
     - CocoaLumberjack/Core
   - OpenSSL-Universal (1.1.2301)
   - PhoneNumberKit/PhoneNumberKitCore (3.8.0)
   - PromisesObjC (2.4.0)
   - PromisesSwift (2.4.0):
     - PromisesObjC (= 2.4.0)
-  - SDWebImage (5.21.0):
-    - SDWebImage/Core (= 5.21.0)
-  - SDWebImage/Core (5.21.0)
-  - SnowplowTracker (6.2.2)
+  - SDWebImage (5.21.7):
+    - SDWebImage/Core (= 5.21.7)
+  - SDWebImage/Core (5.21.7)
+  - SnowplowTracker (6.2.4)
   - zello-opus-ios (1.0.2)
-  - ZelloSDK (2.0.0):
-    - CocoaAsyncSocket (~> 7.6)
-    - CocoaLumberjack/Swift (~> 3.8)
+  - ZelloSDK (3.0.1):
+    - CocoaLumberjack/Swift (= 3.9.0)
     - OpenSSL-Universal (~> 1.1)
     - PhoneNumberKit/PhoneNumberKitCore (~> 3.7)
     - PromisesSwift (~> 2.4)
@@ -24,11 +22,10 @@ PODS:
     - zello-opus-ios (~> 1.0)
 
 DEPENDENCIES:
-  - ZelloSDK (~> 2.0)
+  - ZelloSDK (~> 3.0)
 
 SPEC REPOS:
   trunk:
-    - CocoaAsyncSocket
     - CocoaLumberjack
     - OpenSSL-Universal
     - PhoneNumberKit
@@ -40,17 +37,16 @@ SPEC REPOS:
     - ZelloSDK
 
 SPEC CHECKSUMS:
-  CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
-  CocoaLumberjack: 6a459bc897d6d80bd1b8c78482ec7ad05dffc3f0
+  CocoaLumberjack: 5644158777912b7de7469fa881f8a3f259c2512a
   OpenSSL-Universal: ca89c20240633a77c776082ba76b7d90f992bf77
-  PhoneNumberKit: ec00ab8cef5342c1dc49fadb99d23fa7e66cf0ef
+  PhoneNumberKit: 460b1ae0347f2447af12749fc42f27fc3eb743b1
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   PromisesSwift: 9d77319bbe72ebf6d872900551f7eeba9bce2851
-  SDWebImage: f84b0feeb08d2d11e6a9b843cb06d75ebf5b8868
-  SnowplowTracker: bd92a5bd67705ec2a7dc630576c22e13cf6c8b45
+  SDWebImage: e9fc87c1aab89a8ab1bbd74eba378c6f53be8abf
+  SnowplowTracker: f0eb448f72fb1a283fc4af447cdb9006fe96a896
   zello-opus-ios: 2c22467bba9a102886f1d84fe035b469a3b27f08
-  ZelloSDK: 1b0190ba6a134dbeae1d07f276cfb40992c205f6
+  ZelloSDK: e8661096ad7ea4c7be7a1257db253f5201f8845a
 
-PODFILE CHECKSUM: 3577170aba791718d66e73cd8081f1385da718e5
+PODFILE CHECKSUM: 1c9b5b5179d12c3643e200d28defce715a564350
 
 COCOAPODS: 1.16.2
